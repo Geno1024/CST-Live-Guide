@@ -1,0 +1,70 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache apt packages
+        id: cache-apt
+        uses: actions/cache@v2
+        with:
+          path: ~/apt-cache
+          key: ${{ runner.os }}-${{ secrets.CACHE_KEY }}
+      - name: Download apt packages if cache not exists
+        if: steps.cache-apt.outputs.cache-hit != 'true'
+        run: |
+          sudo apt install -d texlive-xetex texlive-lang-chinese jq
+          mkdir ~/apt-cache
+          sudo cp /var/cache/apt/archives/*.deb ~/apt-cache
+      - name: Copy apt packages if cache exists
+        if: steps.cache-apt.outputs.cache-hit == 'true'
+        run: |
+          sudo cp ~/apt-cache/*.deb /var/cache/apt/archives
+      - name: Install Pygments
+        run: |
+          sudo pip3 install pygments
+      - name: Install TeXLive and Fonts
+        run: |
+          sudo apt install texlive-xetex texlive-lang-chinese
+      - name: Install TeX Package
+        env:
+          TEX_HIST_MIRROR: https://ftp.math.utah.edu/pub/tex/historic/
+          TEXMFHOME: /usr/share/texlive/texmf-dist
+        run: |
+          sudo tlmgr init-usertree
+          sudo tlmgr repository add "$TEX_HIST_MIRROR/systems/texlive/2019/tlnet-final"
+          sudo tlmgr repository list
+          sudo tlmgr repository remove http://mirror.ctan.org/systems/texlive/tlnet
+          sudo tlmgr option repository "$TEX_HIST_MIRROR/systems/texlive/2019/tlnet-final"
+          sudo tlmgr install frankenstein minted fvextra upquote catchfile xstring framed --verify-repo=none || sudo updmap-sys
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build Count
+        env:
+          BUILD_COUNT_SERVER: ${{ secrets.BUILD_COUNT_SERVER }}
+        run: |
+          [[ -n $BUILD_COUNT_SERVER ]] && curl -so build.txt "$BUILD_COUNT_SERVER"/CST-Live-Guide4 || echo -n "LOCAL" > build.txt
+      - name: Build
+        run: |
+          chapters=$(find ./* -maxdepth 1 -type d)
+          mkdir build
+          for chapter in $chapters; do
+            mkdir build/"$chapter"
+          done
+          xelatex -output-directory=build -shell-escape CST-Live-Guide.tex
+          xelatex -output-directory=build -shell-escape CST-Live-Guide.tex
+          cp build/CST-Live-Guide.pdf CST-Live-Guide.pdf
+      - name: Publish
+        uses: actions/upload-artifact@v3
+        with:
+          name: CST-Live-Guide
+          path: CST-Live-Guide.pdf
