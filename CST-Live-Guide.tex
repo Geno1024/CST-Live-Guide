@@ -1,9 +1,12 @@
+%! suppress = Makeatletter
 \documentclass[a4paper, 12pt]{book}
 
-\usepackage{xeCJK}
+\usepackage{CommonInclusion}
 
 \title{CST 生存指南}
 \author{15 CST Geno}
+
+\renewcommand{\contentsname}{目录}
 
 \begin{document}
     \pagenumbering{gobble}
@@ -11,7 +14,6 @@
 % begin of \maketitle
     \makeatletter
     \begin{center}
-
     {\LARGE \@title \par}
         \vskip 3em
             {\large \lineskip .75em \begin{tabular}[t]{c} \@author \end{tabular}\par}
@@ -19,10 +21,14 @@
             {\large \@date \par}
         \vskip 1.5em
         版本 \input{version} ( 构建次数 \input{build.txt})
-
     \end{center}
-
     \makeatother
 
     \tableofcontents
+
+    \newpage
+    \pagenumbering{arabic}
+
+    \setcounter{chapter}{-1}
+    \subfile{Preclass/sitting}
 \end{document}
