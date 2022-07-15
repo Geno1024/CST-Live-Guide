@@ -3,7 +3,7 @@
 [[ -n $BUILD_COUNT_SERVER ]] && curl -so build.txt "$BUILD_COUNT_SERVER"/CST-Live-Guide4 || echo -n "LOCAL" > build.txt
 
 rm -rf build
-chapters=$(find * -maxdepth 1 -type d)
+chapters=$(find ./* -maxdepth 1 -type d)
 mkdir build
 for chapter in $chapters; do
   mkdir build/"$chapter"

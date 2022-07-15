@@ -29,9 +29,6 @@ jobs:
         if: steps.cache-apt.outputs.cache-hit == 'true'
         run: |
           sudo cp ~/apt-cache/*.deb /var/cache/apt/archives
-      - name: Install Pygments
-        run: |
-          sudo pip3 install pygments
       - name: Install TeXLive and Fonts
         run: |
           sudo apt install texlive-xetex texlive-lang-chinese
