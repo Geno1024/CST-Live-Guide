@@ -6,6 +6,9 @@
       <option name="WRAP_ELVIS_EXPRESSIONS" value="0" />
       <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
     </JetCodeStyleSettings>
+    <Latex>
+      <option name="INDENT_SECTIONS" value="true" />
+    </Latex>
     <ScalaCodeStyleSettings>
       <option name="MULTILINE_STRING_CLOSING_QUOTES_ON_NEW_LINE" value="true" />
     </ScalaCodeStyleSettings>

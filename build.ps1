@@ -1,3 +1,5 @@
+$ErrorActionPreference = 'SilentlyContinue'
+
 if ([string]::IsNullOrWhitespace($env:BUILD_COUNT_SERVER))
 {
     Write-Output "LOCAL" | Out-File -FilePath build.txt
