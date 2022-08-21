@@ -10,38 +10,50 @@
         根据进位制的原理，我们可以计算出一个（我们所熟悉的）十进制数所对应的其他进制的表示，也可以将一个其他进制的表示转换为十进制。这样，借助我们所熟悉的十进制，我们就能做到任意进制的相互转换。若源进制与目标进制的基数在分解质因数后有一定的关系，或者非常熟悉目标进制的运算的话，我们也可以不借助十进制直接进行不同进位制的转换。
 
         \subsubsection{十进制转换为其他进制}\label{subsubsec:ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal}
-            将一个十进制数转换为其他进制有许多种方法。
+            将一个十进制数转换为其他进制有几种方法。
             \begin{enumerate}
                 \item 短除法
 
-                首先，将这个十进制数除以目标进制的以十进制表示的基底，记录该除法的余数在目标进制下的表示，并将商继续进行这种除法，直到商为 0 为止，然后将记录的余数从最后到最开始的顺序书写，即为该数的目标进制的表示。
+                    首先，将这个十进制数除以目标进制的以十进制表示的基底，记录该除法的余数在目标进制下的表示，并将商继续进行这种除法，直到商为 0 为止，然后将记录的余数从最后到最开始的顺序书写，即为该数的目标进制的表示。
 
-                例如，欲将十进制整数 $13579$ 转换为十六进制：
+                    例如，欲将十进制整数 $13579$ 转换为十六进制：
 
-                \begin{enumerate}
-                    \item 将该十进制整数除以目标进制的以十进制表示的基底（即 $16$），得到商 $848$，余数 $11$ 转换为目标进制的结果为 $B$；
-                    \item 商 $848$ 继续除以 $16$ 得到商 $53$，余数 $0$（整除）；
-                    \item $53$ 除以 $16$ 得到商 $3$，余数 $5$；
-                    \item $3$ 除以 $16$ 得到商 $0$，余数 $3$，短除法结束；
-                    \item 将计算得到的余数从下往上读取一遍，即得到结果 $350B$。
-                \end{enumerate}
+                    \begin{enumerate}
+                        \item 将该十进制整数除以目标进制的以十进制表示的基底（即 $16$），得到商 $848$，余数 $11$ 转换为目标进制的结果为 $B$；
+                        \item 商 $848$ 继续除以 $16$ 得到商 $53$，余数 $0$（整除）；
+                        \item $53$ 除以 $16$ 得到商 $3$，余数 $5$；
+                        \item $3$ 除以 $16$ 得到商 $0$，余数 $3$，短除法结束；
+                        \item 将计算得到的余数从下往上读取一遍，即得到结果 $350B$。
+                    \end{enumerate}
 
-                % https://tex.stackexchange.com/a/210652/149813
-                \begin{figure}
-                    \centering
-                    \begin{tabular}{rrlll}
-                        16 \shortdiv{13579} &    &                 &   &                  \\
-                        16   \shortdiv{848} & 11 & \textrightarrow & B & \tikzmark{end}   \\
-                        16    \shortdiv{53} &  0 & \textrightarrow & 0 &                  \\
-                        16     \shortdiv{3} &  5 & \textrightarrow & 5 &                  \\
-                        0                   &  3 & \textrightarrow & 3 & \tikzmark{start}
-                    \end{tabular}
-                    \begin{tikzpicture}[overlay, remember picture]
-                        \draw[->] ($(pic cs:start)+(0pt,.5ex)$) to ($(pic cs:end)+(0pt,.5ex)$);
-                    \end{tikzpicture}
-                    \caption{短除法转换十进制为其他进制的示例}
-                    \label{fig:ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal/short-division}
-                \end{figure}
+                    % https://tex.stackexchange.com/a/210652/149813
+                    \begin{figure}
+                        \centering
+                        \begin{tabular}{rrlll}
+                            16 \shortdiv{13579} &    &                 &   &                  \\
+                            16   \shortdiv{848} & 11 & \textrightarrow & B & \tikzmark{end}   \\
+                            16    \shortdiv{53} &  0 & \textrightarrow & 0 &                  \\
+                            16     \shortdiv{3} &  5 & \textrightarrow & 5 &                  \\
+                            0                   &  3 & \textrightarrow & 3 & \tikzmark{start}
+                        \end{tabular}
+                        \begin{tikzpicture}[overlay, remember picture]
+                            \draw[->] ($(pic cs:start)+(0pt,.5ex)$) to ($(pic cs:end)+(0pt,.5ex)$);
+                        \end{tikzpicture}
+                        \caption{短除法转换十进制整数为其他进制的示例}
+                        \label{fig:ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal/short-division-integer}
+                    \end{figure}
+
+                    例如，欲将十进制小数 $1.0625$ 转换为二进制：
+                    \begin{figure}
+                        \centering
+                        \begin{tabular}{rrlll}
+                            2 \shortdiv{1.0625} &  &                 &    & \\
+                        \end{tabular}
+                        \caption{短除法转换十进制小数为其他进制的示例}
+                        \label{fig:ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal/short-division-fractal}
+                    \end{figure}
 
                 \item
             \end{enumerate}
+        \subsubsection{其他进制转换为十进制}\label{subsubsec:ArithBasics/positional-notation-presentation-and-conversion/conversion/to-decimal}
+            将一个非十进制的数转换为十进制，
