@@ -14,17 +14,19 @@
 ]{hyperref}
 \RequirePackage{subfiles}
 \RequirePackage[outputdir=./build]{minted}
-\RequirePackage[backend=biber, style=gb7714-2015]{biblatex}
-\RequirePackage{csquotes}
-\RequirePackage{enumitem}
-\RequirePackage{indentfirst}
-\RequirePackage{stackengine}
+\RequirePackage[backend=biber, style=gb7714-2015]{biblatex} % for References
+\RequirePackage{csquotes} % for ArithBasics/positional-notation/decimal
+\RequirePackage{enumitem} % for ArithBasics/positional-notation/binary
+\RequirePackage{indentfirst} % for CommonInclusion/parindent
+\RequirePackage{stackengine} % for CommonInclusion/shortdiv
+\RequirePackage{multirow} % for ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal
 
 \newcommand{\booknamezh}{CST 生存指南}
 \newcommand{\booknameen}{CST Live Guide}
 \newcommand{\cst}{计算机科学与技术}
 
 % https://tex.stackexchange.com/a/210652/149813
+% for ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal
 \newcommand{\rlwd}{.5pt} \newcommand{\rlht}{2.2ex} \newcommand{\rldp}{.5ex}
 \newcommand{\shortdiv}[1]{~\rule[-\rldp]{\rlwd}{\rlht}\setbox0=\hbox{~#1}\stackunder[\dimexpr\rldp-\rlwd]{~#1}{\rule{\wd0}{\rlwd}}}
 
