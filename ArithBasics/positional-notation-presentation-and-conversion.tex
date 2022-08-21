@@ -27,12 +27,21 @@
                 \end{enumerate}
 
                 % https://tex.stackexchange.com/a/210652/149813
-                \begin{tabular}{rrll}
-                    16\shortdiv{13579} &    & \\
-                    16  \shortdiv{848} & 11 & \textrightarrow B \\
-                    16   \shortdiv{53} &  0 & \textrightarrow 0 \\
-                    16    \shortdiv{3} &  5 & \textrightarrow 5 \\
-                    0                  &  3 & \textrightarrow 3
-                \end{tabular}
+                \begin{figure}
+                    \centering
+                    \begin{tabular}{rrlll}
+                        16 \shortdiv{13579} &    &                 &   &                  \\
+                        16   \shortdiv{848} & 11 & \textrightarrow & B & \tikzmark{end}   \\
+                        16    \shortdiv{53} &  0 & \textrightarrow & 0 &                  \\
+                        16     \shortdiv{3} &  5 & \textrightarrow & 5 &                  \\
+                        0                   &  3 & \textrightarrow & 3 & \tikzmark{start}
+                    \end{tabular}
+                    \begin{tikzpicture}[overlay, remember picture]
+                        \draw[->] ($(pic cs:start)+(0pt,.5ex)$) to ($(pic cs:end)+(0pt,.5ex)$);
+                    \end{tikzpicture}
+                    \caption{短除法转换十进制为其他进制的示例}
+                    \label{fig:ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal/short-division}
+                \end{figure}
+
                 \item
             \end{enumerate}
