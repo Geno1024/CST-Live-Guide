@@ -4,14 +4,15 @@
 [![自动构建状态](https://github.com/Geno1024/CST-Live-Guide/actions/workflows/main.yml/badge.svg)](https://github.com/Geno1024/CST-Live-Guide/actions/workflows/main.yml)
 [![下载数](https://img.shields.io/github/downloads/Geno1024/CST-Live-Guide/total.svg)](https://github.com/Geno1024/CST-Live-Guide/releases)
 
-![协议](https://img.shields.io/github/license/Geno1024/CST-Live-Guide.svg)
+[![协议](https://img.shields.io/github/license/Geno1024/CST-Live-Guide.svg)](https://github.com/Geno1024/CST-Live-Guide/blob/master/LICENSE)
 ![使用 LaTeX 编写](https://img.shields.io/github/languages/top/Geno1024/CST-Live-Guide)
 
 [![跟踪数](https://img.shields.io/github/watchers/Geno1024/CST-Live-Guide?style=social)](https://github.com/Geno1024/CST-Live-Guide/watchers)
 [![派生数](https://img.shields.io/github/forks/Geno1024/CST-Live-Guide?style=social)](https://github.com/Geno1024/CST-Live-Guide/network/members)
 [![收藏数](https://img.shields.io/github/stars/Geno1024/CST-Live-Guide?style=social)](https://github.com/Geno1024/CST-Live-Guide/stargazers)
 
-![贡献者数量](https://img.shields.io/github/contributors/Geno1024/CST-Live-Guide) [![wakatime](https://wakatime.com/badge/github/Geno1024/CST-Live-Guide.svg)](https://wakatime.com/badge/github/Geno1024/CST-Live-Guide)
+[![贡献者数量](https://img.shields.io/github/contributors/Geno1024/CST-Live-Guide)](https://github.com/Geno1024/CST-Live-Guide/graphs/contributors)
+[![wakatime](https://wakatime.com/badge/github/Geno1024/CST-Live-Guide.svg)](https://wakatime.com/badge/github/Geno1024/CST-Live-Guide)
 
 这是一个有点像百科全书的项目，目的是让 CST 的学生对计算机科学与技术有一个比较全面的认知。
 
