@@ -11,7 +11,7 @@
 [![派生数](https://img.shields.io/github/forks/Geno1024/CST-Live-Guide?style=social)](https://github.com/Geno1024/CST-Live-Guide/network/members)
 [![收藏数](https://img.shields.io/github/stars/Geno1024/CST-Live-Guide?style=social)](https://github.com/Geno1024/CST-Live-Guide/stargazers)
 
-![贡献者数量](https://img.shields.io/github/contributors/Geno1024/CST-Live-Guide)
+![贡献者数量](https://img.shields.io/github/contributors/Geno1024/CST-Live-Guide) [![wakatime](https://wakatime.com/badge/github/Geno1024/CST-Live-Guide.svg)](https://wakatime.com/badge/github/Geno1024/CST-Live-Guide)
 
 这是一个有点像百科全书的项目，目的是让 CST 的学生对计算机科学与技术有一个比较全面的认知。
 
@@ -33,5 +33,5 @@ A: 那个仓库由于架构和结构原因暂时废弃。
 ---
 
 ## 作者
-- [JNU 15 CST Geno](https://github.com/Geno1024)  
+- [JNU 15 CST Geno](https://github.com/Geno1024) [![wakatime](https://wakatime.com/badge/user/b596c52b-9f7b-42c7-8e59-be4802ec6d1d/project/2bcfb0c6-518b-48fb-b37d-02f605d1fc6a.svg)](https://wakatime.com/badge/user/b596c52b-9f7b-42c7-8e59-be4802ec6d1d/project/2bcfb0c6-518b-48fb-b37d-02f605d1fc6a)
 - [JNU 15 SE littleredhat](https://github.com/zhangbincheng1997) (former)
