@@ -10,7 +10,7 @@
         根据进位制的原理，我们可以计算出一个（我们所熟悉的）十进制数所对应的其他进制的表示，也可以将一个其他进制的表示转换为十进制。这样，借助我们所熟悉的十进制，我们就能做到任意进制的相互转换。若源进制与目标进制的基数在分解质因数后有一定的关系，或者非常熟悉目标进制的运算的话，我们也可以不借助十进制直接进行不同进位制的转换。
 
         \subsubsection{十进制转换为其他进制}\label{subsubsec:ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal}
-            将一个十进制数转换为其他进制有几种方法。整数部分可以使用短除法或者进位法，小数部分可以使用乘法或者退位法。
+            将一个十进制数转换为其他进制有几种方法。整数部分可以使用短除法或者进位法，小数部分可以使用连乘法或者退位法。
             \begin{enumerate}
                 \item 整数的短除法
 
@@ -23,39 +23,58 @@
                         \item 商 $848$ 继续除以 $16$ 得到商 $53$，余数 $0$（整除）；
                         \item $53$ 除以 $16$ 得到商 $3$，余数 $5$；
                         \item $3$ 除以 $16$ 得到商 $0$，余数 $3$，短除法结束；
-                        \item 将计算得到的余数从下往上读取一遍，即得到结果 $350B$。
+                        \item 将计算得到的余数从下往上读取一遍，即得到结果 $(350B)_{16}$。
                     \end{enumerate}
 
                     % https://tex.stackexchange.com/a/210652/149813
                     \begin{figure}
                         \centering
                         \begin{tabular}{rrlll}
-                            16 \shortdiv{13579} &    &                 &   &                  \\
-                            16   \shortdiv{848} & 11 & \textrightarrow & B & \tikzmark{end}   \\
-                            16    \shortdiv{53} &  0 & \textrightarrow & 0 &                  \\
-                            16     \shortdiv{3} &  5 & \textrightarrow & 5 &                  \\
-                            0                   &  3 & \textrightarrow & 3 & \tikzmark{start}
+                            16 \shortdiv{13579} &    &                 &   &                        \\
+                            16   \shortdiv{848} & 11 & \textrightarrow & B & \tikzmark{sdi-end}     \\
+                            16    \shortdiv{53} &  0 & \textrightarrow & 0 &                        \\
+                            16     \shortdiv{3} &  5 & \textrightarrow & 5 &                        \\
+                            0                   &  3 & \textrightarrow & 3 & \tikzmark{sdi-start}
                         \end{tabular}
                         \begin{tikzpicture}[overlay, remember picture]
-                            \draw[->] ($(pic cs:start)+(0pt,.5ex)$) to ($(pic cs:end)+(0pt,.5ex)$);
+                            \draw[->] ($(pic cs:sdi-start)+(0pt,.5ex)$) to ($(pic cs:sdi-end)+(0pt,.5ex)$);
                         \end{tikzpicture}
                         \caption{短除法转换十进制整数为其他进制的示例}
                         \label{fig:ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal/short-division-integer}
                     \end{figure}
-                \item 小数的乘法
+                \item 小数的连乘法
 
                     将小数部分乘以目标进制的以十进制表示的基底，记录该乘法结果的整数部分在目标进制下的表示，并将小数部分继续进行这种乘法，直到小数部分为 0 为止，然后将记录的整数部分从最开始到最后的顺序书写，即为该数的目标进制的表示。
 
                     注意，将小数进行进制转换时，很容易出现“死循环”，即永远无法达到“小数部分为 0”的情况。这是非常常见的情况，此时转换的结果会是一个无限循环小数或者无限不循环小数，就像 $\frac{1}{3}$ 在十进制下表示为无限循环小数 $0.\overline{3}$ 而在三进制下简单地表示为 $0.1$ 一样。
 
-                    例如，欲将十进制小数 $0.0625$ 转换为二进制：
+                    例如，欲将十进制小数 $0.3125$ 转换为二进制：
+                    \begin{enumerate}
+                        \item 将小数部分乘以目标禁止的以十进制表示的基底（即 $2$），得到 $0.625$，整数部分为 $0$，小数部分为 $.625$；
+                        \item 小数部分 $.625$ 继续乘以 $2$ 得到 $1.25$，整数部分为 $1$，小数部分为 $.25$；
+                        \item $.25$ 乘以 $2$ 得到 $0.5$，整数部分为 $0$，小数部分为 $.5$；
+                        \item $.5$ 乘以 $2$ 得到 $1$，整数部分为 $1$，小数部分为 $.$，连乘法结束；
+                        \item 将计算得到的整数部分从上往下读取一遍，即得到结果 $(0.0101)_2$。
+                    \end{enumerate}
+
                     \begin{figure}
                         \centering
-                        \begin{tabular}{rrlll}
-                            2 \shortdiv{1.0625} &  &                 &    & \\
+                        \begin{tabular}{llll}
+                            \tikzmark{lmf-start}    &   &          & .3125 \\
+                                                    &   & $\times$ &     2 \\ \hline
+                                                    & 0 &          & .625  \\
+                                                    &   & $\times$ &    2  \\ \hline
+                                                    & 1 &          & .25   \\
+                                                    &   & $\times$ &   2   \\ \hline
+                                                    & 0 &          & .5    \\
+                                                    &   & $\times$ &  2    \\ \hline
+                            \tikzmark{lmf-end}      & 1 &          & .
                         \end{tabular}
-                        \caption{短除法转换十进制小数为其他进制的示例}
-                        \label{fig:ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal/short-division-fractal}
+                        \begin{tikzpicture}[overlay, remember picture]
+                            \draw[->] ($(pic cs:lmf-start)+(0pt,.5ex)$) to ($(pic cs:lmf-end)+(0pt,.5ex)$);
+                        \end{tikzpicture}
+                        \caption{连乘法转换十进制小数为其他进制的示例}
+                        \label{fig:ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal/long-multiplication-fractal}
                     \end{figure}
 
                 \item
