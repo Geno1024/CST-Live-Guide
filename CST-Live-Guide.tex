@@ -5,14 +5,13 @@
 % with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 % A copy of the license is included in the section entitled "GNU
 % Free Documentation License".
-
-%! suppress = Makeatletter
 \documentclass[a4paper, 12pt]{book}
 
 \usepackage{CommonInclusion}
 
 \title{CST 生存指南}
 \author{15 CST Geno}
+\date{\today}
 
 \renewcommand{\contentsname}{目录}
 
@@ -20,17 +19,16 @@
     \pagenumbering{gobble}
 
 % begin of \maketitle
-    \makeatletter
+% https://tex.stackexchange.com/a/10133/149813
     \begin{center}
-    {\LARGE \@title \par}
+    {\LARGE \thetitle \par}
         \vskip 3em
-            {\large \lineskip .75em \begin{tabular}[t]{c} \@author \end{tabular}\par}
+            {\large \lineskip .75em \begin{tabular}[t]{c} \theauthor \end{tabular}\par}
         \vskip 1.5em
-            {\large \@date \par}
+            {\large \thedate \par}
         \vskip 1.5em
         版本 \input{version} ( 构建次数 \input{build.txt})
     \end{center}
-    \makeatother
 
     \subfile{Preface/intro}
 
