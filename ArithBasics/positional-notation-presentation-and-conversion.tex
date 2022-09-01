@@ -107,4 +107,31 @@
                 \item
             \end{enumerate}
         \subsubsection{其他进制转换为十进制}\label{subsubsec:ArithBasics/positional-notation-presentation-and-conversion/conversion/to-decimal}
-            将一个非十进制的数转换为十进制，
+            将一个非十进制的数转换为十进制，只需要将各位上的数与对应位的权重相乘并求和即可。
+
+            例如将十六进制数 $(BAD.BEEF)_{16}$ 转换为十进制：
+            \begin{enumerate}
+                \item 将原数的每一位都转为十进制；
+                \item 从小数点开始，往上是源基底的 $0$ 次方并将指数递增，往下是源基底的 $-1$ 次方并将指数递减，写出每一位的权重；
+                \item 每一位均乘以对应的权重，得到积；
+                \item 将积求和，即得到结果 $2989.7458343505859375$。
+            \end{enumerate}
+
+            \begin{figure}
+                \centering
+                \begin{tabular}{r|lrrlrl}
+                    原数 &             十进制 &          &      权重 &   &  积 \\
+                    B    & \textrightarrow 11 & $\times$ & $16^2$    & = & 2816 &. \\
+                    A    & \textrightarrow 10 & $\times$ & $16^1$    & = &  160 &. \\
+                    D    & \textrightarrow 13 & $\times$ & $16^0$    & = &   13 &. \\
+                    .    & \textrightarrow  . & $\times$ &  .        & = &      &. \\
+                    B    & \textrightarrow 11 & $\times$ & $16^{-1}$ & = &    0 &.6875 \\
+                    E    & \textrightarrow 14 & $\times$ & $16^{-2}$ & = &    0 &.0546875 \\
+                    E    & \textrightarrow 14 & $\times$ & $16^{-3}$ & = &    0 &.00341796875 \\
+                    F    & \textrightarrow 14 & $\times$ & $16^{-4}$ & = &    0 &.0002288818359375 \\
+                        &                     &          &           & + &                      \\ \hline
+                        &                     &          &           &   & 2989 &.7458343505859375
+                \end{tabular}
+                \caption{转换十六进制数为十进制数的示例}
+                \label{fig:ArithBasics/positional-notation-presentation-and-conversion/conversion/to-decimal/positional}
+            \end{figure}
