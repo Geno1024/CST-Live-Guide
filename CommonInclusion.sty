@@ -10,13 +10,7 @@
     colorlinks,
     citecolor = blue,
     linkcolor = blue,
-    urlcolor = blue,
-    pdfauthor = {JNU 15 CST Geno},
-    pdftitle = {CST Live Guide},
-    pdfsubject = {CST Live Guide},
-    pdfkeywords = {Computer Science},
-    pdfproducer = {LaTeX},
-    pdfcreator = {XeLaTeX}
+    urlcolor = blue
 ]{hyperref}
 \RequirePackage{subfiles}
 \RequirePackage[outputdir=./build]{minted}
@@ -28,6 +22,16 @@
 \RequirePackage{multirow} % for ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal
 \RequirePackage{tikz}
 \RequirePackage{titling} % for Maketitle
+
+% https://tex.stackexchange.com/a/635103/149813
+\hypersetup{
+    pdfauthor = {JNU 15 CST Geno},
+    pdftitle = {CST Live Guide},
+    pdfsubject = {CST Live Guide},
+    pdfkeywords = {Computer Science},
+    pdfproducer = {LaTeX},
+    pdfcreator = {XeLaTeX}
+}
 
 % https://tex.stackexchange.com/a/351021/149813
 \usetikzlibrary{tikzmark,calc}
