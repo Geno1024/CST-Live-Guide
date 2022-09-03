@@ -7,7 +7,9 @@
             \item 计算机方面，在不同的场合与不同的程序语言中有不同的记号，并且大多数仅指定了记录十进制、十六进制和八进制的记号，少数指定了二进制的记号，少见可以指定任意进制的记号。最为常见的记号来自 C 语言，指定了十六进制前缀 \texttt{0x} 和八进制前缀 \texttt{0}，另外还有见于颜色表示的十六进制前缀 \texttt{\#}，见于 HTML 编码的 \texttt{x} 等。有时需要根据上下文才能判断具体的进制。
         \end{itemize}
     \subsection{不同进位制的转换}\label{subsec:ArithBasics/positional-notation-presentation-and-conversion/conversion}
-        根据进位制的原理，我们可以计算出一个（我们所熟悉的）十进制数所对应的其他进制的表示，也可以将一个其他进制的表示转换为十进制。这样，借助我们所熟悉的十进制，我们就能做到任意进制的相互转换。若源进制与目标进制的基数在分解质因数后有一定的关系，或者非常熟悉目标进制的运算的话，我们也可以不借助十进制直接进行不同进位制的转换。
+        根据进位制的原理，我们可以计算出一个（我们所熟悉的）十进制数所对应的其他进制的表示，也可以将一个其他进制的表示转换为十进制。这样，借助我们所熟悉的十进制，我们就能做到任意进制的相互转换。
+
+        若源进制与目标进制的基数都是某一个数的整数次幂，或者非常熟悉目标进制的运算的话，我们也可以不借助十进制直接进行不同进位制的转换。
 
         \subsubsection{十进制转换为其他进制}\label{subsubsec:ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal}
             将一个十进制数转换为其他进制有几种方法。整数部分可以使用短除法或者退位法，小数部分可以使用连乘法或者退位法，然后将两部分合起来即可。
@@ -133,7 +135,7 @@
         \subsubsection{其他进制转换为十进制}\label{subsubsec:ArithBasics/positional-notation-presentation-and-conversion/conversion/to-decimal}
             将一个非十进制的数转换为十进制，只需要将各位上的数与对应位的权重相乘并求和即可。
 
-            例如将十六进制数 $(BAD.BEEF)_{16}$ 转换为十进制：
+            例如，欲将十六进制数 $(BAD.BEEF)_{16}$ 转换为十进制：
             \begin{enumerate}
                 \item 将原数的每一位都转为十进制；
                 \item 从小数点开始，往上是源基底的 $0$ 次方并将指数递增，往下是源基底的 $-1$ 次方并将指数递减，写出每一位的权重；
@@ -158,4 +160,28 @@
                 \end{tabular}
                 \caption{转换十六进制数为十进制数的示例}
                 \label{fig:ArithBasics/positional-notation-presentation-and-conversion/conversion/to-decimal/positional}
+            \end{figure}
+        \subsubsection{存在乘方关系的不同进制的简便转换}\label{subsubsec:ArithBasics/positional-notation-presentation-and-conversion/conversion/powered-base}
+            如果源进制和目标进制都是同一个数的整数次幂，那么可以简单地把原数一位一位地转化为该数，然后以目标进制的指数作为一组的数量重新分组，再把每组都转化为一个目标禁止的数码，即可不经过十进制进行直接的转换。
+
+            例如，欲将二十七进制数 $(GENO.HI)_{27}$ 转化为九进制 ：
+            \begin{enumerate}
+                \item 检查源进制与目标进制，发现源进制 $27 = 3 ^ 3$，目标进制 $9 = 3 ^ 2$，均为 $3$ 的整数次幂，符合这个简便转换的条件；
+                \item 将源进制逐位转化为中间表示，即 $3$ 进制的数 $(121\ 112\ 212\ 220.122\ 200)_3$；
+                \item 将中间表示按照目标进制的指数作为一组，从小数点开始向两边重新分组，得到 $(12\ 11\ 12\ 21\ 22\ 20.12\ 22\ 00)_3$；
+                \item 将每一组分别转为目标进制，即得结果 $(545786.48)_9$，整数部分最高位和小数部分最低位的 $0$ 可以省略。
+            \end{enumerate}
+
+            \begin{figure}
+                \centering
+                \begin{tabular}{lrrrrrrr}
+                    源数     &   G &   E &   N &   O & . &   H &   I \\
+                    中间表示 & 121 & 112 & 212 & 220 & . & 122 & 200 \\ \hline
+                \end{tabular}
+                \begin{tabular}{lrrrrrrrrrr}
+                    重新分组 & 12 & 11 & 12 & 21 & 22 & 20 & . & 12 & 22 & 00 \\
+                    结果     &  5 &  4 &  5 &  7 &  8 &  6 & . &  4  &  8 &  0
+                \end{tabular}
+                \caption{相同整数的不同幂次进制之间简便转换的示例}
+                \label{fig:ArithBasics/positional-notation-presentation-and-conversion/conversion/powered-base/with-intermediate}
             \end{figure}
