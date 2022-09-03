@@ -64,7 +64,7 @@
                             乘方序列     & 4096 &  512 & 64 &  8 & 1 \\
                             结果         & 0    &    6 &  0 &  3 & 0 \\ \hline
                             要减去多少   & 0    & 3072 &  0 & 24 &   \\
-                            源十进制剩余 & 3096 &   24 & 24 &  0 &
+                            剩余         & 3096 &   24 & 24 &  0 &
                         \end{tabular}
                         \caption{退位法转换十进制整数为其他进制的示例}
                         \label{fig:ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal/descending-subtraction-integer}
@@ -104,7 +104,31 @@
                         \label{fig:ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal/long-multiplication-fractal}
                     \end{figure}
 
-                \item
+                \item 小数的退位法
+
+                    与整数的退位法类似，但是所需要的乘方序列的指数是负数的数列。
+
+                    例如，欲将十进制小数 $0.57421875$ 转换为十六进制：
+
+                    \begin{enumerate}
+                        \item 将目标进制的基底的负数乘方序列以十进制表示从 $1$ 开始往右写，由于无法事先知道有多少位因此先写一位，得到数列 $1$、$0.0625$；
+                        \item 然后从 $1$ 的下一个数开始，试着减去足够多次的 $0.0625$ 但不变成负数，将能够减去的最大次数 $9$ 写于其下方，并记录减去之后的剩余 $0.01171875$；
+                        \item 再计算一位乘方序列也就是 $16^{-2}$，得到 $0.00390625$；
+                        \item 将刚刚的剩余 $0.01171875$ 做如上的试减，将能够减去的最大次数 $3$ 写于其下方，减去之后的剩余为 $0$，故结束循环；
+                        \item 将第二行数从左向右读取，并补上开头的 $0.$，即得到结果 $(0.93)_{16}$。
+                    \end{enumerate}
+
+                    \begin{figure}
+                        \centering
+                        \begin{tabular}{llll}
+                            乘方序列   & 1          & 0.0625     & 0.00390625 \\
+                            结果       & 0          &          9 &          3 \\ \hline
+                            要减去多少 & 0          & 0.5625     & 0.01171875 \\
+                            剩余       & 0.57421875 & 0.01171875 & 0
+                        \end{tabular}
+                        \caption{退位法转换十进制为其他进制的示例}
+                        \label{fig:ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal/descending-subtraction-fractal}
+                    \end{figure}
             \end{enumerate}
         \subsubsection{其他进制转换为十进制}\label{subsubsec:ArithBasics/positional-notation-presentation-and-conversion/conversion/to-decimal}
             将一个非十进制的数转换为十进制，只需要将各位上的数与对应位的权重相乘并求和即可。
