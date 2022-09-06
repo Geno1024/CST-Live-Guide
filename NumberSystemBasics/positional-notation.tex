@@ -1,9 +1,9 @@
-\section{进位制}\label{sec:ArithBasics/positional-notation}
+\section{进位制}\label{sec:NumberSystemBasics/positional-notation}
     在原始社会中，计数与记数的方式伴随着生产与劳动成果分配的过程而萌芽、发展。最原始的记数方式包括了石子记数、结绳记数等。由于进化的偶然，包括人类在内的灵长类动物均具有两只手，每只手上有五根手指。这被普遍认为是十进制的生物学起源。
 
     本节将描述现代计算机中常用的进位制。
 
-    \subsection{十进制}\label{subsec:ArithBasics/positional-notation/decimal}
+    \subsection{十进制}\label{subsec:NumberSystemBasics/positional-notation/decimal}
         从我们学习数数开始，我们便耳濡目染地接触了十进制（Decimal）。我们使用 \texttt{1} 到 \texttt{9} 这九个数码以表征一个数字，并且当要表征的数字比 \texttt{9} 大的时候，往“前”“进一”并使用数码 \texttt{0} 进行占位。这个“进”导致相同的数码在不同的位置上表示的意义不同。例如：\[100\]的 \texttt{1} 表示一个“百”，而\[10000\]的 \texttt{1} 表示一个“万”。在进位制中，不同的位置上的数码，要乘以它所在的位的“权重”。对于十进制而言，这个“权重”就是我们通常所说的“个”、“十”、“百”、“千”、“万”等。
         \begin{displayquote}
             汉语中对于更大的数字的权重，传统上有亿、兆、京、垓、秭、穰、沟、涧、正、载十个名称。但对于这些名称具体表达的权重大小存在不同的定义，这也造成了现代汉语表达上的混淆。
@@ -24,7 +24,7 @@
         观察十进位制的进位规律，当达到 9 之后，下一个数“逢十进一”，将第二位增添 1，而当前位被清零，整个数变成了 10；同样，在第三位上，要等待第二位被第一位累积到 9 之后，再被第一位的 9 由于逢十进一而导致连进两位从而才增添 1：因此可以发现某一位上的权重其实就是进位所需要的数的大小自乘该位位置的结果。这个“进位所需要的数”，也就是“逢几进一”的“几”，我们称为“底数”或“基数”（Base）。
 
         使用不同的底数，就可以得到不同的进位制。相同的数字，在不同的进位制下，也会有不同的表达。
-    \subsection{二进制}\label{subsec:ArithBasics/positional-notation/binary}
+    \subsection{二进制}\label{subsec:NumberSystemBasics/positional-notation/binary}
         二进制（Binary），即以 2 为基数的进位制。现代意义上的以 2 为基数的进位制，是由 Gottfried Wilhelm Leibniz 受伏羲八卦图的影响在 1703 年完成的论文\cite{leibniz-binary}中提出的。
 
         根据前文所表达的“进位制”的概念，我们可以很容易地推出二进制中的“逢二进一”是如何应用到整数的表示中的：
@@ -38,7 +38,7 @@
         \end{enumerate}
 
         可以看出，二进制表达一个数，只使用到 \texttt{0} 和 \texttt{1} 两个数码，并且表达的长度随着所表达的数的大小而快速增长。由于其只使用了两个数码，因此以二进制表达一个数时，每一位所需要的可能状态数非常精简（只有两个），只需要找到一种存在互相对立的属性的形态进行表达即可，因而成为了当代主流计算机在电路层面的数学基础。
-    \subsection{二进制的衍生进制}\label{subsec:ArithBasics/positional-notation/binary-derivation}
+    \subsection{二进制的衍生进制}\label{subsec:NumberSystemBasics/positional-notation/binary-derivation}
         由于二进制的表达通常过于冗长，二进制的衍生进制应运而生。这些衍生进制通过把几位连续的二进制“合并”到一起的方式，既有限度地保留了二进制的精简状态特性，又有效地缩短了表达的长度。
 
         常见的衍生进制是八进制（Octal）和十六进制（Hexadecimal）。
