@@ -42,7 +42,7 @@ jobs:
           sudo tlmgr repository list
           sudo tlmgr repository remove http://mirror.ctan.org/systems/texlive/tlnet
           sudo tlmgr option repository "$TEX_HIST_MIRROR/systems/texlive/2019/tlnet-final"
-          sudo tlmgr install biblatex-gb7714-2015 --verify-repo=none || sudo updmap-sys
+          sudo tlmgr install biblatex-gb7714-2015 siunitx --verify-repo=none || sudo updmap-sys
 #          sudo tlmgr install frankenstein minted fvextra upquote catchfile xstring framed --verify-repo=none || sudo updmap-sys
       - name: Checkout
         uses: actions/checkout@v2
