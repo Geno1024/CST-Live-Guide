@@ -27,8 +27,15 @@
 
     可见，这种记录方式有一个问题，就是无法在精度和范围中间达到平衡：如果采用更小的 $n$，那么可以提高精度，但是可以表达的数的范围便急剧减小；而如果试图提高范围，那么就得采用更大的 $n$，此时精度便开始降低。
 
-    我们仔细思考一下这个平衡失败的原因，就能得出结论：我们没有让“数码在数字中的位置”这个信息变得灵活。如果我们将存储所使用的权重在对数数轴上标记的话，那么会是如图所示的情况：
+    我们仔细思考一下这个平衡失败的原因，就能得出结论：我们没有让“数码在数字中的位置”这个信息灵活起来。如果我们将存储所使用的权重在对数数轴上标记的话，那么会是如图~\ref{fig:NumberSystemBasics/floating-point/position-of-fixed-point} 所示的情况：
 
-    % TODO
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \draw [step = 0.5] (0, 0) grid (10, 0.5);
+        \end{tikzpicture}
+        \caption{存储位在数轴上的位置}
+        \label{fig:NumberSystemBasics/floating-point/position-of-fixed-point}
+    \end{figure}
 
     为了
