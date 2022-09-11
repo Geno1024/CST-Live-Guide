@@ -3,9 +3,7 @@
 
     \subsection{定点数}\label{subsec:NumberSystemBasics/fixed-point-and-floating-point/fixed-point}
 
-        我们可以参考之前学到的方式，直接记录小数的二进制。
-
-        但是此时会出现一个问题，即数据范围。由于二进制中可用的数码 $0$ 和 $1$ 已经被全部用于表达数，因此已经没有记号用于在数码间标记小数点位置并且不造成歧义，所以需要人为预先规定小数点的位置。假设左起第一位为符号位，然后假设把小数点定在 $n$ 位与 $n + 1$ 位之间，剩下的为小数部分的话，那么可以表达的数的范围为 $(-\underbrace{11 \cdots 11}_{n-1}.\underbrace{11 \cdots 11}_{k-n})_2$ -- $(-0.\underbrace{00 \cdots 00}_{k-n}1)_2$ 和 $(0.\underbrace{00 \cdots 00}_{k-n}1)_2$ -- $(\underbrace{11 \cdots 11}_{n-1}.\underbrace{11 \cdots 11}_{k-n})_2$，分度值为 $(0.\underbrace{00 \cdots 00}_{k-n}1)_2$，或者转为十进制是 $-\frac{2^{(k-1)}-1}{2^{(k-n)}}$ -- $-\frac{1}{2^{(k-n)}}$ 和 $\frac{1}{2^{(k-n)}}$ -- $\frac{2^{(k-1)}-1}{2^{(k-n)}}$，分度值为 $\frac{1}{2^{(k-n)}}$。
+        我们可以参考之前学到的方式，直接记录小数的二进制。由于二进制中可用的数码 $0$ 和 $1$ 已经被全部用于表达数，因此已经没有记号用于在数码间标记小数点位置并且不造成歧义，所以需要人为预先规定小数点的位置。假设左起第一位为符号位，然后假设把小数点定在 $n$ 位与 $n + 1$ 位之间，剩下的为小数部分的话，那么可以表达的数的范围为 $(-\underbrace{11 \cdots 11}_{n-1}.\underbrace{11 \cdots 11}_{k-n})_2$ -- $(-0.\underbrace{00 \cdots 00}_{k-n}1)_2$ 和 $(0.\underbrace{00 \cdots 00}_{k-n}1)_2$ -- $(\underbrace{11 \cdots 11}_{n-1}.\underbrace{11 \cdots 11}_{k-n})_2$，分度值为 $(0.\underbrace{00 \cdots 00}_{k-n}1)_2$，或者转为十进制是 $-\frac{2^{(k-1)}-1}{2^{(k-n)}}$ -- $-\frac{1}{2^{(k-n)}}$ 和 $\frac{1}{2^{(k-n)}}$ -- $\frac{2^{(k-1)}-1}{2^{(k-n)}}$，分度值为 $\frac{1}{2^{(k-n)}}$。
 
         一个具体的例子如~\ref{fig:NumberSystemBasics/fixed-point-and-floating-point/fixed-point/data-range} 所示。
 
@@ -27,9 +25,9 @@
             \label{fig:NumberSystemBasics/fixed-point-and-floating-point/fixed-point/data-range}
         \end{figure}
 
-        可见，这种记录方式有一个问题，就是无法在精度和范围中间达到平衡：如果采用更小的 $n$，那么可以提高精度，但是可以表达的数的范围便急剧减小；而如果试图提高范围，那么就得采用更大的 $n$，此时精度便开始降低。
+        这种记录小数的方式，其小数点的位置是固定的，因此被称为定点数（Fixed Point）。比如说，对于二进制小数 $(101.01)_2$ 来说，在不损耗精度的前提下，不管如何修改上面的定义中的参数（即 $k$ 与 $n$），记录的小数点总是会在第二个 $1$ 和 $0$ 之间，这个小数点相对于这个数的位置是固定不变的，这就是“定点数”名称的来源。
 
-        我们仔细思考一下这个平衡失败的原因，就能得出结论：我们没有让“数码在数字中的位置”这个信息灵活起来。如果我们将存储所使用的权重在对数数轴上标记的话，那么会是如图~\ref{fig:NumberSystemBasics/fixed-point-and-floating-point/fixed-point/position} 所示的情况：
+        然而，这种记录方式有一个问题，就是无法在精度和范围中间达到平衡：如果采用更小的 $n$，那么可以提高精度，但是可以表达的数的范围便急剧减小；而如果试图提高范围，那么就得采用更大的 $n$，此时精度便开始降低。这个我们没有让“数码在数字中的位置”这个信息灵活起来。如果我们将存储所使用的权重在对数数轴上标记的话，那么会是如图~\ref{fig:NumberSystemBasics/fixed-point-and-floating-point/fixed-point/position} 所示的情况：
 
         \begin{figure}
             \centering
@@ -72,3 +70,6 @@
             \caption{存储位在数轴上的位置}
             \label{fig:NumberSystemBasics/fixed-point-and-floating-point/fixed-point/position}
         \end{figure}
+
+    \subsection{浮点数}\label{subsec:NumberSystemBasics/fixed-point-and-floating-point/floating-point}
+        回想一下，当我们遇到一个比较大或者比较小的数的时候，我们通常使用科学记数法（Scientific Notation）来简化记录。为了取得精度和范围的平衡，我们可以借鉴科学记数法，使用一定的存储位表达“位置”，用余下的存储位来存储数值。诚然，在有限的存储位中再抠出一部分用于存储“位置”会损失精度，但是我们换来了更大的数值范围，而且对于大一点的数字而言，只要我们充分地权衡好这个损失的量，那么损失少量的精度是可以接受的。
