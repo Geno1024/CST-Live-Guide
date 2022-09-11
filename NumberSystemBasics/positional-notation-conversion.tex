@@ -8,7 +8,7 @@
         \subsubsection{整数的短除法}\label{subsubsec:NumberSystemBasics/positional-notation-conversion/from-decimal/integer-short-division}
             首先，将这个十进制数除以目标进制的以十进制表示的基底，记录该除法结果的余数在目标进制下的表示，并将商继续进行这种除法，直到商为 0 为止，然后将记录的余数从最后到最开始的顺序书写，即为该数的目标进制的表示。
 
-            例如，欲将十进制整数 $13579$ 转换为十六进制：
+            例如，欲将十进制整数 $13579$ 转换为十六进制，如~\ref{fig:NumberSystemBasics/positional-notation-conversion/from-decimal/integer-short-division/sample} 所示：
 
             \begin{enumerate}
                 \item 将该十进制整数除以目标进制的以十进制表示的基底（即 $16$），得到商 $848$，余数 $11$ 转换为目标进制的结果为 $B$；
@@ -37,7 +37,7 @@
         \subsubsection{整数的退位法}\label{subsubsec:NumberSystemBasics/positional-notation-conversion/from-decimal/integer-descending-subtraction}
             将目标进制的的基底的乘方序列以十进制表示从 $1$ 开始往左写，直到比这个十进制数大为止。然后将这一行数从左向右依次与这个数比较，如果这个十进制数比较大的话，就将这个十进制数减去对应的数若干次直到比对应的数小，并且在其下方写上减去的次数在目标进制下的表示，否则就跳过并在其下方写上 $0$，直到这个数被减到 $0$ 为止，如果这一行数还未结束的话则在剩下的数下方均写上 $0$，以此得到的第二行数即为该数的目标进制的表示。
 
-            例如，欲将十进制整数 $3096$ 转换为八进制：
+            例如，欲将十进制整数 $3096$ 转换为八进制，如~\ref{fig:NumberSystemBasics/positional-notation-conversion/from-decimal/integer-descending-subtraction/sample} 所示：
 
             \begin{enumerate}
                 \item 将目标进制的基底的乘方序列以十进制表示从 $1$ 开始往左写，直到比这个十进制数大为止，得到数列 $4096$、$512$、$64$、$8$、$1$；
@@ -65,7 +65,7 @@
 
             注意，将小数进行进制转换时，很容易出现“死循环”，即永远无法达到“小数部分为 0”的情况。这是非常常见的情况，此时转换的结果会是一个无限循环小数或者无限不循环小数，就像 $\frac{1}{3}$ 在十进制下表示为无限循环小数 $0.\overline{3}$ 而在三进制下简单地表示为 $0.1$ 一样。
 
-            例如，欲将十进制小数 $0.3125$ 转换为二进制：
+            例如，欲将十进制小数 $0.3125$ 转换为二进制，如~\ref{fig:NumberSystemBasics/positional-notation-conversion/from-decimal/fractal-long-multiplication} 所示：
             \begin{enumerate}
                 \item 将小数部分乘以目标禁止的以十进制表示的基底（即 $2$），得到 $0.625$，整数部分为 $0$，小数部分为 $.625$；
                 \item 小数部分 $.625$ 继续乘以 $2$ 得到 $1.25$，整数部分为 $1$，小数部分为 $.25$；
@@ -98,13 +98,13 @@
 
             与整数的退位法类似，但是所需要的乘方序列的指数是负数的数列。
 
-            例如，欲将十进制小数 $0.57421875$ 转换为十六进制：
+            例如，欲将十进制小数 $0.57421875$ 转换为十六进制，如~\ref{fig:NumberSystemBasics/positional-notation-conversion/from-decimal/fractal-descending-subtraction} 所示：
 
             \begin{enumerate}
                 \item 将目标进制的基底的负数乘方序列以十进制表示从 $1$ 开始往右写，由于无法事先知道有多少位因此先写一位，得到数列 $1$、$0.0625$；
                 \item 然后从 $1$ 的下一个数开始，试着减去足够多次的 $0.0625$ 但不变成负数，将能够减去的最大次数 $9$ 写于其下方，并记录减去之后的剩余 $0.01171875$；
                 \item 再计算一位乘方序列也就是 $16^{-2}$，得到 $0.00390625$；
-                \item 将刚刚的剩余 $0.01171875$ 做如上的试减，将能够减去的最大次数 $3$ 写于其下方，减去之后的剩余为 $0$，故结束循环；
+                \item 将刚刚的剩余 $0.01171875$ 做这种试减，将能够减去的最大次数 $3$ 写于其下方，减去之后的剩余为 $0$，故结束循环；
                 \item 将第二行数从左向右读取，并补上开头的 $0.$，即得到结果 $(0.93)_{16}$。
             \end{enumerate}
 
@@ -122,7 +122,8 @@
     \subsection{其他进制转换为十进制}\label{subsec:NumberSystemBasics/positional-notation-conversion/to-decimal}
         将一个非十进制的数转换为十进制，只需要将各位上的数与对应位的权重相乘并求和即可。
 
-        例如，欲将十六进制数 $(BAD.BEEF)_{16}$ 转换为十进制：
+        例如，欲将十六进制数 $(BAD.BEEF)_{16}$ 转换为十进制，如~\ref{fig:NumberSystemBasics/positional-notation-conversion/to-decimal/positional} 所示：
+
         \begin{enumerate}
             \item 将原数的每一位都转为十进制；
             \item 从小数点开始，往上是源基底的 $0$ 次方并将指数递增，往下是源基底的 $-1$ 次方并将指数递减，写出每一位的权重；
@@ -151,7 +152,8 @@
     \subsection{存在乘方关系的不同进制的简便转换}\label{subsec:NumberSystemBasics/positional-notation-conversion/powered-base}
         如果源进制和目标进制都是同一个数的整数次幂，那么可以简单地把原数一位一位地转化为该数，然后以目标进制的指数作为一组的数量重新分组，再把每组都转化为一个目标禁止的数码，即可不经过十进制进行直接的转换。
 
-        例如，欲将二十七进制数 $(GENO.HI)_{27}$ 转化为九进制 ：
+        例如，欲将二十七进制数 $(GENO.HI)_{27}$ 转化为九进制，如~\ref{fig:NumberSystemBasics/positional-notation-conversion/powered-base/with-intermediate} 所示：
+
         \begin{enumerate}
             \item 检查源进制与目标进制，发现源进制 $27 = 3 ^ 3$，目标进制 $9 = 3 ^ 2$，均为 $3$ 的整数次幂，符合这个简便转换的条件；
             \item 将源进制逐位转化为中间表示，即 $3$ 进制的数 $(121\ 112\ 212\ 220.122\ 200)_3$；
