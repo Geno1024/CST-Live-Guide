@@ -77,7 +77,7 @@ jobs:
     steps:
       - name: Prepare SSH Key
         run: |
-          echo ${{ secrets.DEPLOY_KEY }} > ~/.ssh/id_rsa
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
       - name: Make Git Repository for Deploying
         run: |
           git init
