@@ -79,6 +79,10 @@ jobs:
         run: |
           mkdir ~/.ssh
           echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
+      - name: Get Build Output
+        uses: actions/download-artifact@v3
+        with:
+          name: CST-Live-Guide
       - name: Make Git Repository for Deploying
         run: |
           git init
