@@ -79,6 +79,7 @@ jobs:
         run: |
           mkdir ~/.ssh
           echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
+          chmod 0600 ~/.ssh/id_rsa
       - name: Get Build Output
         uses: actions/download-artifact@v3
         with:
