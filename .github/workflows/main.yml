@@ -22,6 +22,7 @@ jobs:
       - name: Download apt packages if cache not exists
         if: steps.cache-apt.outputs.cache-hit != 'true'
         run: |
+          sudo apt update
           sudo apt install -d texlive-xetex texlive-lang-chinese texlive-bibtex-extra biber texlive-science
           mkdir ~/apt-cache
           sudo cp /var/cache/apt/archives/*.deb ~/apt-cache
