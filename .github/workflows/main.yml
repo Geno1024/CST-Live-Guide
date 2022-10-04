@@ -69,3 +69,16 @@ jobs:
         with:
           name: CST-Live-Guide
           path: CST-Live-Guide.pdf
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare SSH Key
+        run: |
+          echo ${{ secrets.DEPLOY_KEY }} > ~/.ssh/id_rsa
+      - name: Make Git Repository for Deploying
+        run: |
+          git init
+          git add CST-Live-Guide.pdf
+          git commit -m "[Pipeline] auto build at $(date +%s) ($(date -Iseconds))"
+          git remote add publish git@github.com:Geno1024/CST-Live-Guide
+          git push publish master:preview --force
