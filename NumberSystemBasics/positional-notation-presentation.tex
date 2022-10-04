@@ -12,7 +12,7 @@
         为了讨论方便和章节简短，在本小节中，我们暂不讨论小数（同样，后续章节会介绍小数的记录方式），只考虑一个 $8$ 位的存储整数的设备（即，必须而且只能使用 $8$ 位二进制来表示，若超过 $8$ 位则将其截断，只保留最右边的 $8$ 位）。
 
         最容易想到的记录方式为，直接记录将源数字转换为二进制之后的结果，比如说将 $1$ 表达为 $0000\ 0001$，把 $2$ 表达为 $0000\ 0010$ 等，但是此种方式无法记录负数，因此创造了几种记录方式以便记录负数并令负数可计算。
-
+        % TODO: 补充历史
         \subsubsection{补数}\label{subsubsec:NumberSystemBasics/positional-notation-presentation/binary/complement}
             对于一个 k 位 N 进制数 a，我们定义 a 的基补数（Radix Complement）为 $N ^ k - a$；定义 a 的减基补数（Diminished Radix Complement）为 $(N ^ k - 1) - a$。
 
