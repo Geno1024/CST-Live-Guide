@@ -32,6 +32,7 @@ jobs:
           sudo cp ~/apt-cache/*.deb /var/cache/apt/archives
       - name: Install TeXLive and Fonts
         run: |
+          sudo apt update
           sudo apt install texlive-xetex texlive-lang-chinese texlive-bibtex-extra biber texlive-science
       - name: Install TeX Package
         env:
@@ -71,6 +72,8 @@ jobs:
           path: CST-Live-Guide.pdf
   deploy:
     runs-on: ubuntu-latest
+    needs:
+      - build
     steps:
       - name: Prepare SSH Key
         run: |
