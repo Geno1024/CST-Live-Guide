@@ -86,6 +86,8 @@ jobs:
       - name: Make Git Repository for Deploying
         run: |
           git init
+          git config user.name "Y. Z. Chen"
+          git config user.email "754097987@qq.com"
           git add CST-Live-Guide.pdf
           git commit -m "[Pipeline] auto build at $(date +%s) ($(date -Iseconds))"
           git remote add publish git@github.com:Geno1024/CST-Live-Guide
