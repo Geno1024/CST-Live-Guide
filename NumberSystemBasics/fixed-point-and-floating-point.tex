@@ -166,3 +166,12 @@
                 \caption{IEEE 754 双精度浮点数示意图}
                 \label{fig:NumberSystemBasics/fixed-point-and-floating-point/ieee-754/basic-format/double}
             \end{figure}
+
+            并定义：
+            \begin{enumerate}
+                \item 如果 $e$ 是 $2047$ 且 $f$ 不为 $0$（形如 $s\ 11111111111\ bbbb \cdots bbbb$），那么其表示的值为 NaN；
+                \item 如果 $e$ 是 $2047$ 且 $f$ 为 $0$（形如 $s\ 11111111111\ 0000 \cdots 0000$），那么其表示的值为 $(-1)^s\infty$；
+                \item 如果 $e$ 在 $0$（不含）和 $2047$（不含）之间（通常情况），那么其表示的值为 $(-1)^s2^{e-1023}(1 \cdot f)$；
+                \item 如果 $e$ 为 $0$ 但 $f$ 不为 $0$（形如 $s\ 00000000000\ bbbb \cdots bbbb$），那么其表示的值为非规格化浮点数 $(-1)^s2^{-1022}(0 \cdot f)$；
+                \item 如果 $e$ 和 $f$ 均为 $0$（形如 $s\ 00000000000\ 0000 \cdots 0000$），那么其表示的值为 $(-1)^s0$。
+            \end{enumerate}
