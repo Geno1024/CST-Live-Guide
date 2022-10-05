@@ -146,3 +146,23 @@
                 \item 如果 $e$ 为 $0$ 但 $f$ 不为 $0$（形如 $s\ 00000000\ bbbb \cdots bbbb$），那么其表示的值为非规格化浮点数 $(-1)^s2^{-126}(0 \cdot f)$；
                 \item 如果 $e$ 和 $f$ 均为 $0$（形如 $s\ 000000000\ 0000 \cdots 0000$），那么其表示的值为 $(-1)^s0$。
             \end{enumerate}
+
+            双精度浮点数由 64 位二进制数组成，从左到右分别是 1 位的符号位 $s$，11 位的偏移指数 $e$ 和 52 位的分数 $f$，如图~\ref{fig:NumberSystemBasics/fixed-point-and-floating-point/ieee-754/basic-format/double} 所示，
+            \begin{figure}
+                \centering
+                \begin{tikzpicture}
+                    \draw (0, 0) rectangle (0.25, 0.25);
+                    \node at (0.125, 0.125) {s};
+                    \node at (0.125, -0.25) {1};
+
+                    \draw (0.25, 0) rectangle (3, 0.25);
+                    \node at (1.625, 0.125) {e};
+                    \node at (1.625, -0.25) {11};
+
+                    \draw (3, 0) rectangle (16, 0.25);
+                    \node at (9.5, 0.125) {f};
+                    \node at (9.5, -0.25) {52};
+                \end{tikzpicture}
+                \caption{IEEE 754 双精度浮点数示意图}
+                \label{fig:NumberSystemBasics/fixed-point-and-floating-point/ieee-754/basic-format/double}
+            \end{figure}
