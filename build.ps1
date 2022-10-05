@@ -8,6 +8,7 @@ else
 {
     Invoke-WebRequest -OutFile build.txt $env:BUILD_COUNT_SERVER/CST-Live-Guide4
 }
+(detex CST-Live-Guide.tex | Measure-Object -Character).Characters > wordcount.txt
 
 Remove-Item -Recurse build
 New-Item -ItemType Directory build
