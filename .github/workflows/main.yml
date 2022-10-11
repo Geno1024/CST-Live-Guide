@@ -74,12 +74,12 @@ jobs:
           mv */* .
           mv viewer.html index.html
           rmdir build web
+          rm "${pdfjs##*/}"
           sed -i "s#../build/##" index.html pdf.js viewer.js
           sed -i "s/compressed.tracemonkey-pldi-09.pdf/CST-Live-Guide.pdf/" viewer.js
       - name: Speeding Up Artifact Uploading and Downloading
         run: |
           cd pdfjs || exit
-          rm "${pdfjs##*/}"
           rm compressed.tracemonkey-pldi-09.pdf
           loc=$(grep zh-CN locale.properties)
           find locale -mindepth 1 ! -name "zh-CN" -delete
