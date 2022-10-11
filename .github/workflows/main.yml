@@ -65,13 +65,31 @@ jobs:
           xelatex -output-directory=build -shell-escape CST-Live-Guide.tex
           xelatex -output-directory=build -shell-escape CST-Live-Guide.tex
           cp build/CST-Live-Guide.pdf CST-Live-Guide.pdf
-      - name: Publish
+      - name: Modify Pdf.js for Web Page
+        run: |
+          mkdir pdfjs && cd pdfjs
+          pdfjs=$(curl -s https://api.github.com/repos/mozilla/pdf.js/releases | jq -r .[0].assets[0].browser_download_url)
+          wget "$pdfjs"
+          unzip "${pdfjs##*/}"
+          mv */* .
+          mv viewer.html index.html
+          rmdir build web
+          sed -i "s#../build/##" index.html pdf.js viewer.js
+          sed -i "s/compressed.tracemonkey-pldi-09.pdf/CST-Live-Guide.pdf/" viewer.js
+          rm compressed.tracemonkey-pldi-09.pdf
+      - name: Publish Document
         uses: actions/upload-artifact@v3
         with:
           name: CST-Live-Guide
           path: |
             build.txt
             CST-Live-Guide.pdf
+      - name: Publish Modified Pdf.js
+        uses: actions/upload-artifact@v3
+        with:
+          name: Modified Pdf.js
+          path: |
+            pdfjs
   deploy:
     runs-on: ubuntu-latest
     needs:
@@ -86,12 +104,18 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: CST-Live-Guide
+      - name: Get Modified Pdf.js
+        uses: actions/download-artifact@v3
+        with:
+          name: Modified Pdf.js
       - name: Make Git Repository for Deploying
         run: |
+          mv pdfjs/* .
           git init
           git config user.name "Y. Z. Chen"
           git config user.email "754097987@qq.com"
           git add CST-Live-Guide.pdf build.txt
+          git add index.html pdf.js viewer.js viewer.css images/* locales/zh-CN/*
           git commit -m "[Pipeline] auto build at $(date +%s) ($(date -Iseconds))"
           git remote add publish git@github.com:Geno1024/CST-Live-Guide
           git push publish master:preview --force
