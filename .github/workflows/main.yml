@@ -81,9 +81,9 @@ jobs:
         run: |
           cd pdfjs || exit
           rm compressed.tracemonkey-pldi-09.pdf
-          loc=$(grep zh-CN locale.properties)
+          loc=$(grep zh-CN locale/locale.properties)
           find locale -mindepth 1 ! -name "zh-CN" -delete
-          echo "$loc" > locale.properties
+          echo "$loc" > locale/locale.properties
       - name: Publish Document
         uses: actions/upload-artifact@v3
         with:
