@@ -82,7 +82,7 @@ jobs:
           cd pdfjs || exit
           rm compressed.tracemonkey-pldi-09.pdf
           loc=$(grep zh-CN locale/locale.properties)
-          find locale -mindepth 1 ! -name "zh-CN" -delete
+          find locale -mindepth 1 ! -wholename "*/zh-CN/*" -delete
           echo "$loc" > locale/locale.properties
       - name: Publish Document
         uses: actions/upload-artifact@v3
@@ -121,7 +121,7 @@ jobs:
           git config user.name "Y. Z. Chen"
           git config user.email "754097987@qq.com"
           git add CST-Live-Guide.pdf build.txt
-          git add index.html pdf.js viewer.js viewer.css images/* locale/zh-CN/*
+          git add index.html pdf.js viewer.js viewer.css images locale
           git commit -m "[Pipeline] auto build at $(date +%s) ($(date -Iseconds))"
           git remote add publish git@github.com:Geno1024/CST-Live-Guide
           git push publish master:preview --force
