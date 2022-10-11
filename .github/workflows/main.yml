@@ -67,7 +67,7 @@ jobs:
           cp build/CST-Live-Guide.pdf CST-Live-Guide.pdf
       - name: Modify Pdf.js for Web Page
         run: |
-          mkdir pdfjs && cd pdfjs
+          mkdir pdfjs && cd pdfjs || exit
           pdfjs=$(curl -s https://api.github.com/repos/mozilla/pdf.js/releases | jq -r .[0].assets[0].browser_download_url)
           wget "$pdfjs"
           unzip "${pdfjs##*/}"
@@ -76,8 +76,14 @@ jobs:
           rmdir build web
           sed -i "s#../build/##" index.html pdf.js viewer.js
           sed -i "s/compressed.tracemonkey-pldi-09.pdf/CST-Live-Guide.pdf/" viewer.js
+      - name: Speeding Up Artifact Uploading and Downloading
+        run: |
+          cd pdfjs || exit
           rm "${pdfjs##*/}"
           rm compressed.tracemonkey-pldi-09.pdf
+          loc=$(grep zh-CN locale.properties)
+          find locale -mindepth 1 ! -name "zh-CN" -delete
+          echo "$loc" > locale.properties
       - name: Publish Document
         uses: actions/upload-artifact@v3
         with:
