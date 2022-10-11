@@ -76,6 +76,7 @@ jobs:
           rmdir build web
           sed -i "s#../build/##" index.html pdf.js viewer.js
           sed -i "s/compressed.tracemonkey-pldi-09.pdf/CST-Live-Guide.pdf/" viewer.js
+          rm "${pdfjs##*/}"
           rm compressed.tracemonkey-pldi-09.pdf
       - name: Publish Document
         uses: actions/upload-artifact@v3
@@ -110,7 +111,6 @@ jobs:
           name: Modified Pdf.js
       - name: Make Git Repository for Deploying
         run: |
-          mv pdfjs/* .
           git init
           git config user.name "Y. Z. Chen"
           git config user.email "754097987@qq.com"
