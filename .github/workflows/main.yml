@@ -76,6 +76,7 @@ jobs:
           rmdir build web
           rm "${pdfjs##*/}"
           sed -i "s#../build/##" index.html pdf.js viewer.js
+          sed -i "s#../web/##" viewer.js
           sed -i "s/compressed.tracemonkey-pldi-09.pdf/CST-Live-Guide.pdf/" viewer.js
       - name: Speeding Up Artifact Uploading and Downloading
         run: |
