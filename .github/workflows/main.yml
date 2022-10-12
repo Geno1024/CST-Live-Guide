@@ -121,7 +121,7 @@ jobs:
           git config user.name "Y. Z. Chen"
           git config user.email "754097987@qq.com"
           git add CST-Live-Guide.pdf build.txt
-          git add index.html pdf.js pdf.worker.js viewer.js viewer.css images locale
+          git add index.html pdf.js pdf.worker.js viewer.js viewer.css images locale cmaps
           git commit -m "[Pipeline] auto build at $(date +%s) ($(date -Iseconds))"
           git remote add publish git@github.com:Geno1024/CST-Live-Guide
           git push publish master:preview --force
