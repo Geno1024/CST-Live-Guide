@@ -78,6 +78,10 @@ jobs:
           sed -i "s#../build/##" index.html pdf.js viewer.js
           sed -i "s#../web/##" viewer.js
           sed -i "s/compressed.tracemonkey-pldi-09.pdf/CST-Live-Guide.pdf/" viewer.js
+      - name: Add View Statistics
+        run: |
+          sed -i 's#<script src="viewer.js"></script>#<script src="viewer.js"></script><script>var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?ae57a79677a7d93aa293d74c5bf7faa6"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>#' index.html
+          sed -i "$(($(cat -n index.html | grep document_properties_close | awk '{print $1}') - 1))i<div class=\"separator\"></div>\n<div class=\"row\"><img src=\"https://hits.dwyl.com/Geno1024/CST-Live-Guide.svg\" /></div>" index.html
       - name: Speeding Up Artifact Uploading and Downloading
         run: |
           cd pdfjs || exit
