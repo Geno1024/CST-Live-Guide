@@ -7,7 +7,7 @@ job("Build") {
             interpreter = "/bin/bash"
 //            location = "./build.sh"
             content = """
-                cd ${'$'}JB_SPACE_WORK_DIR_PATH
+                cd ${'$'}JB_SPACE_WORK_DIR_PATH/work/CST-Live-Guide
                 ./build.sh
                 
                 SOURCE_PATH=CST-Live-Guide.pdf
