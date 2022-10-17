@@ -5,9 +5,8 @@ job("Build") {
 
         shellScript("Build") {
             interpreter = "/bin/bash"
-//            location = "./build.sh"
             content = """
-                cd ${'$'}JB_SPACE_WORK_DIR_PATH/work/CST-Live-Guide
+                cd ${'$'}JB_SPACE_WORK_DIR_PATH
                 ./build.sh
                 
                 SOURCE_PATH=CST-Live-Guide.pdf
