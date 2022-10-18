@@ -40,7 +40,7 @@
         在有了通用的进位制的概念之后，我们可以非常容易地定义其它的进位制。
 
     \subsection{二进制}\label{subsec:NumberSystemBasics/PositionalNotation/Binary}
-        二进制（Binary），即以 \texttt{2} 为基数的进位制。现代意义上的以 2 为基数的进位制，是由 Gottfried Wilhelm Leibniz 受伏羲八卦图的影响在 1703 年完成的论文\footnote{\footfullcite{leibniz-binary}\cite{leibniz-binary}}中提出的。
+        二进制（Binary），即以 \texttt{2} 为基数的进位制。现代意义上的以 2 为基数的进位制，是由 Gottfried Wilhelm Leibniz 受伏羲八卦图的影响在 1703 年完成的论文\cite{leibniz-binary}中提出的。
         % TODO: 改写上下两段话。
         由于二进制的每一位只有两种状态，因此使用若干个可以表达两种状态的物体即可表达一个二进制数，而电子电路恰好满足这个条件，例如电路的“通”与“断”，电压的“高”与“低”，等等，因此现代的计算机都以二进制作为电路层面最底层的数学基础。
 
@@ -64,13 +64,16 @@
         顾名思义，八进制逢八进一，需要八个数码。为了复用已有的符号，一般八进制使用十进制所使用的前八个符号，即 \texttt{0} 到 \texttt{7} 八个数码。
 
         而十六进制，需要十六个数码，通常的十进制并不能满足需要，因此需要额外使用六个符号。在计算机的历史上，有过多种不同的符号选择方式：
-        \begin{figure}
-            \centering
-            \begin{tabular}{|c|l|l|l|l|l|l|}
-                \hline
-                设备型号 & 10 & 11 & 12 & 13 & 14 & 15 \\ \hline
-                PDS 1020 & L & C & A & S & M & D \\ \hline
-            \end{tabular}
-            \caption{历史上出现过的不同的十六进制数码}
-            \label{fig:NumberSystemBasics/PositionalNotation/BinaryDerivation/HistoricalHexadecimalDigits}
-        \end{figure}
+        \begin{savenotes}
+            \begin{table}
+                \centering
+                \begin{tabular}{|c|l|l|l|l|l|l|}
+                    \hline
+                    设备型号 & 10 & 11 & 12 & 13 & 14 & 15 \\ \hline
+                    Monrobot XI\footnote{\cite[SEXADECIMAL SYSTEM]{monrobot-xi-program-manual}，有文章指出这样的奇怪排布是出于穿孔卡片方便\cite{johnmann-monrobot-xi}，但是 Geno 并没有找到这个型号的穿孔卡片的样子。} & S & T & U & V & W & X \\ \hline
+                    PDS 1020 & L & C & A & S & M & D \\ \hline
+                \end{tabular}
+                \caption{历史上出现过的不同的十六进制数码}
+                \label{tab:NumberSystemBasics/PositionalNotation/BinaryDerivation/HistoricalHexadecimalDigits}
+            \end{table}
+        \end{savenotes}
