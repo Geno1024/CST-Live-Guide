@@ -33,7 +33,7 @@ jobs:
       - name: Install TeXLive and Fonts
         run: |
           sudo apt update
-          sudo apt install texlive-xetex texlive-lang-chinese texlive-bibtex-extra biber texlive-science
+          sudo apt install texlive-xetex texlive-lang-chinese texlive-bibtex-extra biber
       - name: Install TeX Package
         env:
           TEX_HIST_MIRROR: https://ftp.math.utah.edu/pub/tex/historic/
