@@ -26,14 +26,17 @@ jobs:
           sudo apt install -d texlive-xetex texlive-lang-chinese texlive-bibtex-extra biber texlive-science
           mkdir ~/apt-cache
           sudo cp /var/cache/apt/archives/*.deb ~/apt-cache
+        shell: bash
       - name: Copy apt packages if cache exists
         if: steps.cache-apt.outputs.cache-hit == 'true'
         run: |
           sudo cp ~/apt-cache/*.deb /var/cache/apt/archives
+        shell: bash
       - name: Install TeXLive and Fonts
         run: |
           sudo apt update
-          sudo apt install texlive-xetex texlive-lang-chinese texlive-bibtex-extra biber
+          sudo apt install texlive-xetex texlive-lang-chinese texlive-bibtex-extra biber texlive-science
+        shell: bash
       - name: Install TeX Package
         env:
           TEX_HIST_MIRROR: https://ftp.math.utah.edu/pub/tex/historic/
@@ -46,6 +49,7 @@ jobs:
 #          sudo tlmgr option repository "$TEX_HIST_MIRROR/systems/texlive/2019/tlnet-final"
           sudo tlmgr install biblatex-gb7714-2015 --verify-repo=none || sudo updmap-sys
 #          sudo tlmgr install frankenstein minted fvextra upquote catchfile xstring framed --verify-repo=none || sudo updmap-sys
+        shell: bash
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build Count
@@ -53,6 +57,7 @@ jobs:
           BUILD_COUNT_SERVER: ${{ secrets.BUILD_COUNT_SERVER }}
         run: |
           [[ -n $BUILD_COUNT_SERVER ]] && curl -so build.txt "$BUILD_COUNT_SERVER"/CST-Live-Guide4 || echo -n "LOCAL" > build.txt
+        shell: bash
       - name: Build
         run: |
           chapters=$(find ./* -maxdepth 1 -type d)
@@ -65,6 +70,7 @@ jobs:
           xelatex -output-directory=build -shell-escape CST-Live-Guide.tex
           xelatex -output-directory=build -shell-escape CST-Live-Guide.tex
           cp build/CST-Live-Guide.pdf CST-Live-Guide.pdf
+        shell: bash
       - name: Modify Pdf.js for Web Page
         run: |
           mkdir pdfjs && cd pdfjs || exit
@@ -78,11 +84,13 @@ jobs:
           sed -i "s#../build/##" index.html pdf.js viewer.js
           sed -i "s#../web/##" viewer.js
           sed -i "s/compressed.tracemonkey-pldi-09.pdf/CST-Live-Guide.pdf/" viewer.js
+        shell: bash
       - name: Add View Statistics
         run: |
           cd pdfjs || exit
           sed -i 's#<script src="viewer.js"></script>#<script src="viewer.js"></script><script>var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?ae57a79677a7d93aa293d74c5bf7faa6"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>#' index.html
           sed -i "$(($(cat -n index.html | grep document_properties_close | awk '{print $1}') - 1))i<div class=\"separator\"></div>\n<div class=\"row\"><img src=\"https://hits.dwyl.com/Geno1024/CST-Live-Guide.svg\" /></div>" index.html
+        shell: bash
       - name: Speeding Up Artifact Uploading and Downloading
         run: |
           cd pdfjs || exit
@@ -90,6 +98,7 @@ jobs:
           loc=$(grep zh-CN locale/locale.properties)
           find locale -mindepth 1 ! -wholename "*/zh-CN*" -delete
           echo "$loc" > locale/locale.properties
+        shell: bash
       - name: Publish Document
         uses: actions/upload-artifact@v3
         with:
@@ -113,6 +122,7 @@ jobs:
           mkdir ~/.ssh
           echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
           chmod 0600 ~/.ssh/id_rsa
+        shell: bash
       - name: Get Build Output
         uses: actions/download-artifact@v3
         with:
@@ -131,3 +141,4 @@ jobs:
           git commit -m "[Pipeline] auto build at $(date +%s) ($(date -Iseconds))"
           git remote add publish git@github.com:Geno1024/CST-Live-Guide
           git push publish master:preview --force
+        shell: bash
