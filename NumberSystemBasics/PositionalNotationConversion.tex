@@ -4,4 +4,181 @@
     若源进位制与目标进位制的基数都是某一个数的整数次幂的话，我们也可以不借助十进制直接进行不同进位制的转换。另外，如果非常熟悉目标进位制的运算，那么直接转换也是可行的。
 
     \subsection{十进制转换为其他进位制}\label{subsec:NumberSystemBasics/PositionalNotationConversion/FromDecimal}
-        将一个十进制数转换为其他进位制有几种方法。整数部分可以使用短除法或者退位法，小数部分可以使用
+        将一个十进制数转换为其他进位制有几种方法。整数部分可以使用短除法或者退位法，小数部分可以使用连乘法或者退位法，然后将两部分合起来即可。
+
+        \subsubsection{整数的短除法}\label{subsubsec:NumberSystemBasics/PositionalNotationConversion/FromDecimal/IntegerShortDivision}
+            首先，将欲转换的整数除以目标进制的基底，记录余数在目标进制下的表示，并将商继续进行这种除法，直到商为 0 为止。最后将记录下的余数从最末到最初的顺序书写，即为该整数在目标进制下的表示。
+
+            例如，欲将十进制整数 $13579$ 转换为十六进制，如~\ref{fig:NumberSystemBasics/PositionalNotationConversion/FromDecimal/IntegerShortDivision/Sample} 所示：
+
+            \begin{enumerate}
+                \item 将该十进制整数除以目标进制的基底（即 $16$），得到商 $848$，余数 $11$ 转换为目标进制的结果为 $B$；
+                \item 商 $848$ 继续除以 $16$ 得到商 $53$，余数 $0$（整除）；
+                \item $53$ 除以 $16$ 得到商 $3$，余数 $5$；
+                \item $3$ 除以 $16$ 得到商 $0$，余数 $3$，短除法结束；
+                \item 将计算得到的余数从下往上读取一遍，即得到结果 $(350B)_{16}$。
+            \end{enumerate}
+
+            % https://tex.stackexchange.com/a/210652/149813
+            \begin{figure}
+                \centering
+                \begin{tabular}{rrlll}
+                    16 \shortdiv{13579} &    &                 &   &                        \\
+                    16   \shortdiv{848} & 11 & \textrightarrow & B & \tikzmark{sdi-end}     \\
+                    16    \shortdiv{53} &  0 & \textrightarrow & 0 &                        \\
+                    16     \shortdiv{3} &  5 & \textrightarrow & 5 &                        \\
+                    0                   &  3 & \textrightarrow & 3 & \tikzmark{sdi-start}
+                \end{tabular}
+                \begin{tikzpicture}[overlay, remember picture]
+                    \draw[->] ($(pic cs:sdi-start)+(0pt,.5ex)$) to ($(pic cs:sdi-end)+(0pt,.5ex)$);
+                \end{tikzpicture}
+                \caption{短除法转换十进制整数为其他进制的示例}
+                \label{fig:NumberSystemBasics/PositionalNotationConversion/FromDecimal/IntegerShortDivision/Sample}
+            \end{figure}
+
+        \subsubsection{整数的退位法}\label{subsubsec:NumberSystemBasics/PositionalNotationConversion/FromDecimal/IntegerDescendingSubtraction}
+            将目标进制的基底的乘方序列以十进制表示出来，然后从 $1$ 开始往左写，直到比欲转换的整数大为止。然后将这一行数从左向右依次与欲转换的数比较并按需做减法，直到其被减到 $0$ 为止：如果欲转换的数比较大的话，就将欲转换的数减掉被比较的数若干次，直到比被比较的数小，然后在下方写上减去的次数在目标进制下的表示；如果是被比较的数比较大的话，就跳过它，并在下方写上 $0$。如果欲转换的数已经被减到 $0$ 了但是第一行数仍未结束，那么在剩下的数的下方均写上 $0$。最终得到的第二行数即为该数在目标进制下的表示。
+
+            例如，欲将十进制整数 $3096$ 转换为八进制，如~\ref{fig:NumberSystemBasics/PositionalNotationConversion/FromDecimal/IntegerDescendingSubtraction/Sample} 所示：
+
+            \begin{enumerate}
+                \item 将目标进制的基底的乘方序列以十进制表示从 $1$ 开始往左写，直到比这个十进制数大为止，得到数列 $4096$、$512$、$64$、$8$、$1$；
+                \item 然后将这一行数从左向右依次与这个数比较，第一个是 $4096$，比 $3072$ 大，故在 $4096$ 下方写 $0$；
+                \item 下一个数是 $512$，比 $3096$ 小，尝试发现减去 $6$ 次之后的结果 $24$ 开始比 $512$ 小，故在 $512$ 下方写 $6$；
+                \item 下一个数 $64$ 比 $24$ 大，故跳过，在 $64$ 下方写 $0$；
+                \item 下一个数 $8$ 可以将 $24$ 减去 $3$ 次得到 $0$，故在 $8$ 下方写 $3$，并结束循环；
+                \item 最后剩余一个数 $1$，在其下方写上 $0$；
+                \item 将第二行数从左向右读取，并舍弃开头的 $0$，即得到结果 $(6030)_8$。
+            \end{enumerate}
+
+            \begin{figure}
+                \centering
+                \begin{tabular}{lrrrrr}
+                    乘方序列     & 4096 &  512 & 64 &  8 & 1 \\
+                    结果         & 0    &    6 &  0 &  3 & 0 \\ \hline
+                    要减去多少   & 0    & 3072 &  0 & 24 &   \\
+                    剩余         & 3096 &   24 & 24 &  0 &
+                \end{tabular}
+                \caption{退位法转换十进制整数为其他进制的示例}
+                \label{fig:NumberSystemBasics/PositionalNotationConversion/FromDecimal/IntegerDescendingSubtraction/Sample}
+            \end{figure}
+
+        \subsubsection{小数的连乘法}\label{subsubsec:NumberSystemBasics/PositionalNotationConversion/FromDecimal/FractalLongMultiplication}
+            将小数乘以目标进制的基底，记录乘积的整数部分在目标进制下的表示，并将乘积的小数部分继续进行这个运算，直到小数部分为 $0$ 为止，然后将记录到的整数部分从最初到最末的顺序书写，即为该小数在目标进制下的表示。
+
+            注意，将小数进行进制转换时，是可能出现“死循环”，即永远无法达到“小数部分为 $0$”的情况的。这是非常常见的情况，其实就像 $\frac{1}{3}$ 在十进制下表示为无限循环小数 $0.\overline{3}$ 而在三进制下是简单的 $0.1$ 一样，此时转换结果会是一个无限循环小数或无限不循环小数。
+
+            \begin{displayquote}
+                10 分解质因数的结果是 $2 \times 5$，只有 2 和 5 两个素因子，因此目标进制如果含有 2 或 5 之外的素因子，十进制下的有限小数就会在转换时变成一个无限小数。
+            \end{displayquote}
+
+            例如，欲将十进制小数 $0.3125$ 转换为二进制，如~\ref{fig:NumberSystemBasics/PositionalNotationConversion/FromDecimal/FractalLongMultiplication/Sample} 所示：
+            \begin{enumerate}
+                \item 将小数乘以目标进制的基底（即 $2$），得到 $0.625$，整数部分为 $0$，小数部分为 $.625$；
+                \item 小数部分 $.625$ 继续乘以 $2$ 得到 $1.25$，整数部分为 $1$，小数部分为 $.25$；
+                \item $.25$ 乘以 $2$ 得到 $0.5$，整数部分为 $0$，小数部分为 $.5$；
+                \item $.5$ 乘以 $2$ 得到 $1$，整数部分为 $1$，小数部分为 $.$，连乘法结束；
+                \item 将计算得到的整数部分从上往下读取一遍，即得到结果 $(0.0101)_2$。
+            \end{enumerate}
+
+            \begin{figure}
+                \centering
+                \begin{tabular}{llll}
+                    \tikzmark{lmf-start}    &   &          & .3125 \\
+                    &   & $\times$ &     2 \\ \hline
+                    & 0 &          & .625  \\
+                    &   & $\times$ &    2  \\ \hline
+                    & 1 &          & .25   \\
+                    &   & $\times$ &   2   \\ \hline
+                    & 0 &          & .5    \\
+                    &   & $\times$ &  2    \\ \hline
+                    \tikzmark{lmf-end}      & 1 &          & .
+                \end{tabular}
+                \begin{tikzpicture}[overlay, remember picture]
+                    \draw[->] ($(pic cs:lmf-start)+(0pt,.5ex)$) to ($(pic cs:lmf-end)+(0pt,.5ex)$);
+                \end{tikzpicture}
+                \caption{连乘法转换十进制小数为其他进制的示例}
+                \label{fig:NumberSystemBasics/PositionalNotationConversion/FromDecimal/FractalLongMultiplication/Sample}
+            \end{figure}
+
+        \subsubsection{小数的退位法}\label{subsubsec:NumberSystemBasics/PositionalNotationConversion/FromDecimal/FractalDescendingSubtraction}
+            与整数的退位法类似，但是所需要的乘方序列是目标进制的基底的负整数次方的数列。
+
+            例如，欲将十进制小数 $0.57421875$ 转换为十六进制，如~\ref{fig:NumberSystemBasics/PositionalNotationConversion/FromDecimal/FractalDescendingSubtraction/Sample} 所示：
+
+            \begin{enumerate}
+                \item 将目标进制的基底的负数次方序列以十进制表示从 $1$ 开始往右写，由于无法事先知道有多少位因此先写一位，得到数列 $1$、$0.0625$；
+                \item 然后从 $1$ 的下一个数开始，试着减去足够多次的 $0.0625$ 但不变成负数，将能够减去的最大次数 $9$ 写于其下方，并记录减去之后的剩余 $0.01171875$；
+                \item 再计算一位乘方序列也就是 $16^{-2}$，得到 $0.00390625$；
+                \item 将刚刚的剩余 $0.01171875$ 做这种试减，将能够减去的最大次数 $3$ 写于其下方，减去之后的剩余为 $0$，故结束循环；
+                \item 将第二行数从左向右读取，并补上开头的 $0.$，即得到结果 $(0.93)_{16}$。
+            \end{enumerate}
+
+            \begin{figure}
+                \centering
+                \begin{tabular}{llll}
+                    乘方序列   & 1          & 0.0625     & 0.00390625 \\
+                    结果       & 0          &          9 &          3 \\ \hline
+                    要减去多少 & 0          & 0.5625     & 0.01171875 \\
+                    剩余       & 0.57421875 & 0.01171875 & 0
+                \end{tabular}
+                \caption{退位法转换十进制小数为其他进制的示例}
+                \label{fig:NumberSystemBasics/PositionalNotationConversion/FromDecimal/FractalDescendingSubtraction/Sample}
+            \end{figure}
+
+    \subsection{其他进位制转换为十进制}\label{subsec:NumberSystemBaiscs/PositionalNotationConversion/ToDecimal}
+        将一个非十进制的数转换为十进制，只需要将各位上的数与对应位的权重的积求和即可。
+
+        例如，欲将十六进制数 $(BAD.BEEF)_{16}$ 转换为十进制，如~\ref{fig:NumberSystemBaiscs/PositionalNotationConversion/ToDecimal/Sample} 所示：
+
+        \begin{enumerate}
+            \item 将欲转换的数的每一位都转为十进制；
+            \item 从小数点开始，往上是源基底的 $0$ 次方并将指数递增，往下是源基底的 $-1$ 次方并将指数递减，写出每一位的权重；
+            \item 每一位均乘以对应的权重，得到积；
+            \item 将积求和，即得到结果 $2989.7458343505859375$。
+        \end{enumerate}
+
+        \begin{figure}
+            \centering
+            \begin{tabular}{r|lrrlS[table-format=-4.0]}
+                原数 &             十进制 &          &      权重 &   &  积 \\
+                B    & \textrightarrow 11 & $\times$ & $16^2$    & = & 2816. \\
+                A    & \textrightarrow 10 & $\times$ & $16^1$    & = &  160. \\
+                D    & \textrightarrow 13 & $\times$ & $16^0$    & = &   13. \\
+                .    & \textrightarrow  . & $\times$ &  .        & = &    0. \\
+                B    & \textrightarrow 11 & $\times$ & $16^{-1}$ & = &    0.6875 \\
+                E    & \textrightarrow 14 & $\times$ & $16^{-2}$ & = &    0.0546875 \\
+                E    & \textrightarrow 14 & $\times$ & $16^{-3}$ & = &    0.00341796875 \\
+                F    & \textrightarrow 15 & $\times$ & $16^{-4}$ & = &    0.0002288818359375 \\
+                &                     &          &           & + &                      \\ \hline
+                &                     &          &           &   & 2989.7458343505859375
+            \end{tabular}
+            \caption{转换十六进制数为十进制数的示例}
+            \label{fig:NumberSystemBaiscs/PositionalNotationConversion/ToDecimal/Sample}
+        \end{figure}
+
+    \subsection{存在乘方关系的不同进位制的简便转换}\label{subsec:NumberSystemBasics/PositionalNotationConversion/PoweredBase}
+        如果源进制的基底 $k_s$ 和目标进制的基底 $k_d$ 都是同一个整数 $k$ 的整数次幂，那么可以简单地把欲转换的数以小数点为起点向左右逐位转换成 $log_k(k_s)$ 位 $k$ 进制数，然后以小数点为起点向左右每 $log_k(k_d)$ 位分为一组，并将每组转换为一位目标进制的数，即可不经过十进制进行直接转换。
+
+        例如，欲将二十七进制数 $(GENO.HI)_{27}$ 转化为九进制，如~\ref{fig:NumberSystemBasics/PositionalNotationConversion/PoweredBase/WithIntermediate} 所示：
+
+        \begin{enumerate}
+            \item 检查源进位制与目标进位制的基底，发现源进位制的基底 $27 = 3 ^ 3$，目标进位制的基底 $9 = 3 ^ 2$，均为 $3$ 的整数次幂，符合这个简便转换的条件；
+            \item 将欲转换的数逐位转化为中间表示，即 $3$ 进制的数 $(121\ 112\ 212\ 220.122\ 200)_3$；
+            \item 将中间表示每 $2$ 位 $(= log_3(9))$ 作为一组，从小数点开始向两边重新分组，得到 $(12\ 11\ 12\ 21\ 22\ 20.12\ 22\ 00)_3$；
+            \item 将每一组分别转为目标进位制的数，即得结果 $(545786.48)_9$，整数部分最高位和小数部分最低位的 $0$ 可以省略。
+        \end{enumerate}
+
+        \begin{figure}
+            \centering
+            \begin{tabular}{lrrrrrrr}
+                源数     &   G &   E &   N &   O & . &   H &   I \\
+                中间表示 & 121 & 112 & 212 & 220 & . & 122 & 200 \\ \hline
+            \end{tabular}
+            \begin{tabular}{lrrrrrrrrrr}
+                重新分组 & 12 & 11 & 12 & 21 & 22 & 20 & . & 12 & 22 & 00 \\
+                结果     &  5 &  4 &  5 &  7 &  8 &  6 & . &  4  &  8 &  0
+            \end{tabular}
+            \caption{相同整数的不同幂次进位制之间简便转换的示例}
+            \label{fig:NumberSystemBasics/PositionalNotationConversion/PoweredBase/WithIntermediate}
+        \end{figure}
