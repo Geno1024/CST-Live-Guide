@@ -1,0 +1,14 @@
+\section{定点数与浮点数}\label{sec:NumberSystemBasics/FixedPointAndFloatingPoint}
+    解决了整数的二进制记录问题之后，我们需要考虑小数的记录的问题。
+
+    我们可以参考在整数时使用的方式，直接记录小数的二进制，但是这会造成一个问题：由于二进制只有两个可用的记号 $0$ 和 $1$，而且它们都已经被用来表达数字，因此已经没有记号可以用来在数码之间标记出小数点的位置且不造成歧义。显然，“小数点在哪里”这个问题有两种解决方案，一种是事先约定好小数点的位置，一种是划出一段空间用来记录小数点的位置。
+
+    \subsection{定点数}\label{subsec:NumberSystemBasics/FixedPointAndFloatingPoint/FixedPoint}
+        对于一个有 $k$ 位的设备，如果我们事先约定小数点的位置在 $n$ 位与 $n + 1$ 位之间的话，那么这个小数的表达方式就能总结为如下几点：
+        \begin{enumerate}
+            \item 左起第一位为符号位；
+            \item 左起第二位到第 $n$ 位是整数部分的二进制记录；
+            \item 左起第 $n + 1$ 位到第 $k$ 位是小数部分的二进制记录。
+        \end{enumerate}
+
+        此时它可以表达的数的范围是 $(-\underbrace{11 \cdots 11}_{n-1}.\underbrace{11 \cdots 11}_{k-n})_2$ -- $(-0.\underbrace{00 \cdots 00}_{k-n}1)_2$ 和 $(0.\underbrace{00 \cdots 00}_{k-n}1)_2$ -- $(\underbrace{11 \cdots 11}_{n-1}.\underbrace{11 \cdots 11}_{k-n})_2$，或者说 $-\frac{2^{(k-1)}-1}{2^{(k-n)}}$ -- $-\frac{1}{2^{(k-n)}}$ 和 $\frac{1}{2^{(k-n)}}$ -- $\frac{2^{(k-1)}-1}{2^{(k-n)}}$，分度值为 $(0.\underbrace{00 \cdots 00}_{k-n}1)_2$，或者说 $\frac{1}{2^{(k-n)}}$。
