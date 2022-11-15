@@ -12,3 +12,27 @@
         \end{enumerate}
 
         此时它可以表达的数的范围是 $(-\underbrace{11 \cdots 11}_{n-1}.\underbrace{11 \cdots 11}_{k-n})_2$ -- $(-0.\underbrace{00 \cdots 00}_{k-n}1)_2$ 和 $(0.\underbrace{00 \cdots 00}_{k-n}1)_2$ -- $(\underbrace{11 \cdots 11}_{n-1}.\underbrace{11 \cdots 11}_{k-n})_2$，或者说 $-\frac{2^{(k-1)}-1}{2^{(k-n)}}$ -- $-\frac{1}{2^{(k-n)}}$ 和 $\frac{1}{2^{(k-n)}}$ -- $\frac{2^{(k-1)}-1}{2^{(k-n)}}$，分度值为 $(0.\underbrace{00 \cdots 00}_{k-n}1)_2$，或者说 $\frac{1}{2^{(k-n)}}$。
+
+        一个具体的例子如~\ref{fig:NumberSystemBasics/FixedPointAndFloatingPoint/FixedPoint/DataRange} 所示。
+
+        % https://tex.stackexchange.com/a/130008/149813
+        \begin{figure}
+            \centering
+            \begin{tabular}{lS[table-format=-3.7]S[table-format=-3.7]S[table-format=-3.7]}
+                $n$ & 最小值     & 最大值    & 分度值    \\ \hline
+                1   & -0.9921875 & 0.9921875  & 0.0078125 \\
+                2   & -1.984375  & 1.984375   & 0.015625  \\
+                3   & -3.96875   & 3.96875    & 0.03125   \\
+                4   & -7.9375    & 7.9375     & 0.0625    \\
+                5   & -15.875    & 15.875     & 0.125     \\
+                6   & -31.75     & 31.75      & 0.25      \\
+                7   & -63.5      & 63.5       & 0.5       \\
+                8   & -127       & 127        & 1         \\
+            \end{tabular}
+            \caption{$k = 8$ 时 $n$ 的值对应的数据范围}
+            \label{fig:NumberSystemBasics/FixedPointAndFloatingPoint/FixedPoint/DataRange}
+        \end{figure}
+
+        对于以上的定义，
+
+        这种记录小数的方式，在一开始小数点的位置就被固定了，因此称为“定点数”（Fixed Point）：比如说，对于二进制小数 $(100.11)_2$ 来说，不管如何修改 $k$ 和 $n$，这个数的小数点的位置总是在第二个 $0$ 和第二个 $1$ 之间，这个小数点的位置是固定不变的，因此
