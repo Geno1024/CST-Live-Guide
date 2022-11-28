@@ -12,7 +12,7 @@
 [![收藏数](https://img.shields.io/github/stars/Geno1024/CST-Live-Guide?style=social)](https://github.com/Geno1024/CST-Live-Guide/stargazers)
 
 [![贡献者数量](https://img.shields.io/github/contributors/Geno1024/CST-Live-Guide)](https://github.com/Geno1024/CST-Live-Guide/graphs/contributors)
-[![wakatime](https://wakatime.com/badge/github/Geno1024/CST-Live-Guide.svg)](https://wakatime.com/badge/github/Geno1024/CST-Live-Guide)
+[![Wakatime](https://wakatime.com/badge/github/Geno1024/CST-Live-Guide.svg)](https://wakatime.com/badge/github/Geno1024/CST-Live-Guide)
 
 这是一个有点像百科全书的项目，目的是让 CST 的学生对计算机科学与技术有一个比较全面的认知。
 
