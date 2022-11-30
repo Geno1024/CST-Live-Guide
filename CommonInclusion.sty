@@ -14,17 +14,18 @@
 ]{hyperref}
 \RequirePackage{subfiles}
 \RequirePackage[outputdir=./build]{minted}
-\RequirePackage[backend=biber, style=gb7714-2015]{biblatex} % for References
-\RequirePackage{csquotes} % for ArithBasics/positional-notation/decimal
-\RequirePackage{enumitem} % for ArithBasics/positional-notation/binary
-\RequirePackage{indentfirst} % for CommonInclusion/parindent
-\RequirePackage{stackengine} % for CommonInclusion/shortdiv
-\RequirePackage{multirow} % for ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal
 \RequirePackage{tikz}
+\RequirePackage[backend=biber, style=gb7714-2015]{biblatex} % for References
 \RequirePackage{titling} % for Maketitle
-\RequirePackage{siunitx} % for NumberSystemBasics/fixed-point-and-floating-point/fixed-point/data-range
-\RequirePackage[normalem]{ulem} % for NumberSystemBasics/fixed-point-and-floating-point/floating-point-notations, https://tex.stackexchange.com/a/13699/149813
+\RequirePackage{indentfirst} % for CommonInclusion/parindent
+\RequirePackage{csquotes} % for NumberSystemBasics/PositionalNotation/Decimal
+\RequirePackage{enumitem} % for NumberSystemBasics/PositionalNotation/Binary
 \RequirePackage{tablefootnote} % for NumberSystemBasics/PositionalNotation/BinaryDerivation/HistoricalHexadecimalDigits, https://tex.stackexchange.com/a/35669/149813
+\RequirePackage{stackengine} % for NumberSystemBasics/PositionalNotationConversion/FromDecimal/IntegerShortDivision/Sample -> CommonInclusion/shortdiv
+\RequirePackage{siunitx} % for NumberSystemBasics/FixedPointAndFloatingPoint/FixedPoint/DataRange
+
+%\RequirePackage{multirow} % for NumberSystemBasics/PositionalNotationConversion/FromDecimal/IntegerShortDivision/Sample
+%\RequirePackage[normalem]{ulem} % for NumberSystemBasics/fixed-point-and-floating-point/floating-point-notations, https://tex.stackexchange.com/a/13699/149813
 
 % https://tex.stackexchange.com/a/635103/149813
 \hypersetup{
@@ -44,7 +45,7 @@
 \newcommand{\cst}{计算机科学与技术}
 
 % https://tex.stackexchange.com/a/210652/149813
-% for ArithBasics/positional-notation-presentation-and-conversion/conversion/from-decimal
+% for NumberSystemBasics/PositionalNotationConversion/FromDecimal/IntegerShortDivision/Sample
 \newcommand{\rlwd}{.5pt}
 \newcommand{\rlht}{2.2ex}
 \newcommand{\rldp}{.5ex}
