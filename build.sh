@@ -8,7 +8,7 @@ mkdir build
 for chapter in $chapters; do
   mkdir build/"$chapter"
 done
-detex CST-Live-Guide.tex | wc -c > wordcount.txt
+detex CST-Live-Guide.tex | wc -m > wordcount.txt
 xelatex -output-directory=build -shell-escape -synctex=1 CST-Live-Guide.tex
 biber --output-directory=build CST-Live-Guide
 xelatex -output-directory=build -shell-escape -synctex=1 CST-Live-Guide.tex
