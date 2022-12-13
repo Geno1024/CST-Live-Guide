@@ -47,6 +47,9 @@ jobs:
           BUILD_COUNT_SERVER: ${{ secrets.BUILD_COUNT_SERVER }}
         run: |
           [[ -n $BUILD_COUNT_SERVER ]] && curl -so build.txt "$BUILD_COUNT_SERVER"/CST-Live-Guide4 || echo -n "LOCAL" > build.txt
+      - name: Word Count
+        run: |
+          detex CST-Live-Guide.tex | wc -m > wordcount.txt
       - name: Build
         run: |
           chapters=$(find ./* -maxdepth 1 -type d)
