@@ -13,10 +13,10 @@
 
         此时它可以表达的数的范围是 $(-\underbrace{11 \cdots 11}_{n-1}.\underbrace{11 \cdots 11}_{k-n})_2$ -- $(-0.\underbrace{00 \cdots 00}_{k-n}1)_2$ 和 $(0.\underbrace{00 \cdots 00}_{k-n}1)_2$ -- $(\underbrace{11 \cdots 11}_{n-1}.\underbrace{11 \cdots 11}_{k-n})_2$，或者说 $-\frac{2^{(k-1)}-1}{2^{(k-n)}}$ -- $-\frac{1}{2^{(k-n)}}$ 和 $\frac{1}{2^{(k-n)}}$ -- $\frac{2^{(k-1)}-1}{2^{(k-n)}}$，分度值为 $(0.\underbrace{00 \cdots 00}_{k-n}1)_2$，或者说 $\frac{1}{2^{(k-n)}}$。
 
-        一个具体的例子如~\ref{fig:NumberSystemBasics/FixedPointAndFloatingPoint/FixedPoint/DataRange} 所示。
+        一个具体的例子如~\ref{tab:NumberSystemBasics/FixedPointAndFloatingPoint/FixedPoint/DataRange} 所示。
 
         % https://tex.stackexchange.com/a/130008/149813
-        \begin{figure}
+        \begin{table}
             \centering
             \begin{tabular}{lS[table-format=-3.7]S[table-format=-3.7]S[table-format=-3.7]}
                 $n$ & 最小值     & 最大值    & 分度值    \\ \hline
@@ -30,8 +30,8 @@
                 8   & -127       & 127        & 1         \\
             \end{tabular}
             \caption{$k = 8$ 时 $n$ 的值对应的数据范围}
-            \label{fig:NumberSystemBasics/FixedPointAndFloatingPoint/FixedPoint/DataRange}
-        \end{figure}
+            \label{tab:NumberSystemBasics/FixedPointAndFloatingPoint/FixedPoint/DataRange}
+        \end{table}
 
         对于以上的定义，
 
