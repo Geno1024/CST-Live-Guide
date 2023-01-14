@@ -14,6 +14,46 @@
     “数码所表示的数值与位置无关”的情况则与此相反：一个数码在某个位置上，并不表示它必然具有某个指定的权重，它所代表的数值可能要根据其上下文确定。
 
     \subsection{罗马数字}\label{subsec:NumberSystemBasics/NonPositional/RomanNumeral}
+        罗马数字（Roman Numeral）是古罗马使用的记数系统，使用拉丁字母的一套结合规则表达数字，现今依然见于例如年份记载、钟表、编号等场合。
+
+        具体的值见于表~\ref{tab:NumberSystemBasics/NonPositional/RomanNumeral/Values}。
+
+        \begin{table}
+            \centering
+            \begin{tabular}{|l|c|c|c|c|c|c|c|}
+                \hline
+                字母 & I & V &  X &  L &   C &   D &    M \\ \hline
+                数值 & 1 & 5 & 10 & 50 & 100 & 500 & 1000 \\ \hline
+            \end{tabular}
+            \caption{罗马数字常用的拉丁字母及其值}
+            \label{tab:NumberSystemBasics/NonPositional/RomanNumeral/Values}
+        \end{table}
+
+        确定的结合规则包括：
+        \begin{enumerate}
+            \item 连续重复几次就是几倍；
+            \item 数值大的字母的右边写上数值小的字母，是两个数值相加；若是左边则是相减。
+        \end{enumerate}
+
+        另外有一些常见的规则，例如连续重复的次数不超过 3 次等，但是并不是严格的；还有一些不常用的表示其他数值的字母，此处不再赘述。
+
+    \subsection{格雷码}\label{subsec:NumberSystemBasics/NonPositional/GrayCode}
+        格雷码（Gray Code）是 1953 年由美国工程师 Frank Gray 提出的一种令相邻的数字只相差一位的二进制记数方式，常用于数据传输等场合。
+
+        自然数转换为格雷码之后的序列可以以如下方式构造：
+        \begin{itemize}
+            \item 令 $a_0$ 为 ${0, 1}$；
+            \item 令 $a_n$ 为 $a_{n-1}$ 与逆序且每一个数的最左边补上一个 $1$ 的 $a_{n-1}$；
+            \item 则 $a_n$ 为 $0$ 到 $2^{n-1}$ 之间的自然数的格雷码表示。
+        \end{itemize}
+
+        二进制数转换为格雷码，只需要将二进制数的相邻两位做不进位加法然后开头补上一个 $1$ 即可；格雷码转换为二进制数则需要先写上开头的 $1$，然后从左起第二位格雷码开始，将每一位格雷码与上一位二进制位做不进位加法得到下一位二进制位。
 
     \subsection{二进制编码的十进制}\label{subsec:NumberSystemBasics/NonPositional/BinaryCodedDecimal}
-        二进制编码的十进制（Binary-Coded Decimal，简称 BCD）是
+        二进制编码的十进制（Binary-Coded Decimal，简称 BCD）是 1928 年由 IBM 发明的一种将十进制数逐位转化为二进制来拼接的记数方式，在一些不需要运算的场合（例如屏幕数字显示等）比较常用。
+
+        最常用的 BCD 是 8421 BCD，即每一位十进制数都转化为 $4$ 位二进制数，而这 $4$ 位的权重从左到右分别是 $8$、$4$、$2$、$1$。此外其它场合常用的还有 5421 BCD、4221 BCD 等。
+
+        另有一种称为“余 3 码”（Excess 3 Code）的 BCD，其构造方式是在转化为 8421 BCD 的时候，在每一位都加上 $3$ 之后再转化为二进制。这种方式的好处是在进行加减法运算时较为方便，并且每一位十进制转化后不存在 $0000$ 和 $1111$，在数据传输时可以简单地排除一些错误。
+
+        除此之外还有使用格雷码来作为二进制编码方式的 BCD。
