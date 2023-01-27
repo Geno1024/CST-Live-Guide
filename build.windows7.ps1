@@ -13,4 +13,4 @@ xelatex -output-directory=build -shell-escape -synctex=1 CST-Live-Guide.tex
 biber --output-directory=build CST-Live-Guide
 xelatex -output-directory=build -shell-escape -synctex=1 CST-Live-Guide.tex
 xelatex -output-directory=build -shell-escape -synctex=1 CST-Live-Guide.tex
-Copy-Item -Path build/CST-Live-Guide.pdf -Destination CST-Live-Guide.pdf
+Copy-Item -Path build/CST-Live-Guide.pdf -Destination CST-Live-Guide.pdf -Force
