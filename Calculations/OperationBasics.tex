@@ -1,0 +1,18 @@
+\section{运算的基础概念}\label{sec:Calculations/OperationBasics}
+    \subsection{运算的定义}\label{subsec:Calculations/OperationBasics/DefinitionOfOperation}
+        运算（Operation）是对若干个数进行转化以获得结果的操作。在不同的场合下，它可能叫做函数（Function）、映射（Mapping）、算子（Operator）、变换（Transformation）、投影（Projection）等，这些都是不同的领域中对一组数进行操作的过程的称呼。
+
+        对于运算来说，被执行操作的数称为运算数（Operand），但若是对于函数，则将其称为变量（Argument），对于映射则称为原像（Source）。
+
+        参与运算的运算数的数目称为运算的元数（Arity）。例如，没有运算数的运算称为空元运算（Nullary Operation），只有一个运算数的运算称为一元运算（Unary Operation 或 Monadic Operation）或单目运算，有两个运算数的运算称为二元运算（Binary Operation 或 Dyadic Operation）或双目运算，有三个运算数的运算称为三元运算（Ternary Operation 或 Triadic Operation）或三目运算。
+
+        表记一个运算的符号称为运算符（Operator）。另外一个运算是几元的就可以将其运算符称为几元运算符或几目运算符。
+
+    \subsection{运算的表示}\label{subsec:Calculations/OperationBasics/PresentationOfOperation}
+        在不同的场合下，运算有不同的表示方式。就运算符的放置位置而言，有前缀（Prefix）、中缀（Infix）、后缀（Postfix）三种方式。
+
+        \begin{itemize}
+            \item 前缀运算符，又称波兰表示法（Polish Notation），指的是将运算符放置在运算数之前的表示法。例如将 $1$ 与 $23$ 相加（$+$）会记作\texttt{+ 1 23}；
+            \item 中缀运算符，是我们最经常接触到的表示法，将运算符放置在运算数之间。例如将 $1$ 与 $23$ 相加（$+$）会记作\texttt{1 + 23}；
+            \item 后缀运算符，又称逆波兰表示法（Reverse Polish Notation），则将运算符放置在运算数之后。例如将 $1$ 与 $23$ 相加（$+$）会记作\texttt{1 23 +}。
+        \end{itemize}
