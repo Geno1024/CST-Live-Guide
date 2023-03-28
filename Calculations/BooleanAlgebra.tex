@@ -1,3 +1,28 @@
 \section{布尔代数}\label{sec:Calcuations/BooleanAlgebra}
-    \subsection{起源}\label{subsec:Calculations/BooleanAlgebra/Origin}
+    \subsection{起源及建构}\label{subsec:Calculations/BooleanAlgebra/OriginAndBuilding}
         1847 年 10 月 29 日，英国数学家 George Boole 提出了一种描述逻辑关系的数学符号体系，并基于这一套体系对逻辑进行数学分析\cite{boole-1847}。
+
+        首先做出如下的定义：
+        \begin{enumerate}
+            \item 定义 $1$ 为“全集”\footnote{原文为 Universe。}，或者将其理解为对一类不管是否真实存在的物体的想象。另外，一个物体可能不止存在于一个“类”中，因为它可能与其他物体具有不止一种的相同的属性；
+            \item 定义例如 $X$、$Y$、$Z$ 等大写字母为一“类”物体。例如，$X$ 代表着一类具有相同属性的物体，$Y$ 代表着一类具有另外一种相同属性的物体；
+            \item 定义例如 $x$、$y$、$z$ 等小写字母为对应的大写字母“类”中的相同的属性。例如，$x$ 代表全部 $X$ 的相同的属性，$y$ 代表全部 $Y$ 的相同的属性。
+        \end{enumerate}
+
+        在未提及任何具体属性的时候，对于 $X$，我们可以假定 $1$ 就是 $x$，于是我们可以写出式子\[x = x\]来表示“任何具有属性 $x$ 的物体均具有属性 $x$”。
+
+        我们定义两个属性的乘积 $xy$ 代表 $Y$ 中那些能够在 $X$ 中找到的物体，即同时存在于 $X$ 和 $Y$ 中的物体；同理 $xyz$ 代表同时存在于 $X$、$Y$、$Z$ 中的物体：其实这是在描述一个选择\footnote{原文为 elective。}的过程。
+
+        接着我们能得出如下的结论：
+        \begin{enumerate}
+            \item 选择的结果与选择的分组无关。或者说，对于一类物体，在其中选出属于 $X$ 的，或者将这一类物体任意地分成两份，并分别选出属于 $X$ 的，再将其合并，其结果相同。这可以记为\[x(u + v) = xu + xv\]
+            \item 选择的结果与选择的次序无关。例如，我们在全部动物中先选择一群羊，然后在其中选择出有角的\footnote{原文如此。}，或者在全部动物中先选择出全部有角的，然后在其中选择出属于羊的，其结果都是选择出了有角的羊\footnote{并不是所有的羊都有羊角，例如承德无角山羊。}。这可以记为\[xy = yx\]
+            \item 相同选择执行多次等同于执行一次。在 $X$ 中选出属于 $X$ 的，其结果依然是 $X$。这可以记为\[x ^ n = x\]
+        \end{enumerate}
+
+        于是我们建立了一套如下的运算系统：
+        \begin{align}
+            x(u + v) &= xu + xv \label{eqn:Calculations/BooleanAlgebra/OriginAndBuilding/DistributiveLaw} \\
+            xy &= yx \label{eqn:Calculations/BooleanAlgebra/OriginAndBuilding/CommutativeLaw} \\
+            x ^ n &= x \label{eqn:Calculations/BooleanAlgebra/OriginAndBuilding/IndexLaw}
+        \end{align}
