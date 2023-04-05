@@ -81,16 +81,45 @@
             \item 破坏性条件三段论：如果 $X$ 真，那么 $Y$ 真（于是有 $x(1 - y) = 0$），由于 $Y$ 假（于是有 $y = 0$），可得 $x = 0$ 也就是 $X$ 假。
         \end{itemize}
 
-        事实上，我们构建出了一套取值范围只有 $0$ 和 $1$ 两种情况的数值系统，这个系统可以用于表达命题的真假，还可以表达命题间的逻辑关系。后来这个数值系统被命名为布尔代数（Boolean Algebra）。
+        事实上，我们构建出了一套取值范围只有 $0$ 和 $1$ 两种情况的数值系统，这个系统可以用于表达命题的真假，还可以表达命题间的逻辑关系。后来这个数值系统被命名为布尔代数。
 
     \subsection{定义}\label{subsec:Calculations/BooleanAlgebra/Definition}
-        布尔代数是
-
-    \subsection{运算与定律}\label{subsec:subsec:Calculations/BooleanAlgebra/OperationsAndLaws}
-        布尔代数上常用的几个运算符分别称为“与”、“或”、“非”。
-
+        布尔代数（Boolean Algebra）是一个至少带有底元素 $\bot$、顶元素 $\top$ 及与运算 $\wedge$、或运算 $\vee$、取反运算 $\neg$，且对于任意元素 $a$、$b$ 与 $c$ 的运算满足以下定理的代数结构：
         \begin{itemize}
-            \item “与”是一个二元运算符，其可以
-            \item “或”是一个二元运算符
-            \item “非”是
+            \item 交换律（Commutativity）：$a \wedge b = b \wedge a$，$a \vee b = b \vee a$；
+            \item 结合律（Associativity）：$(a \wedge b) \wedge c = a \wedge (b \wedge c)$，$(a \vee b) \vee c = a \vee (b \vee c)$；
+            \item 分配律（Distributivity）：$a \wedge (b \vee c) = (a \wedge b) \vee (a \wedge c)$，$a \vee (b \wedge c) = (a \vee b) \wedge (a \vee c)$；
+            \item 吸收律（Absorption）：$a \wedge (a \vee b) = a$，$a \vee (a \wedge b) = a$；
+            \item 同一律（Identity）：$a \wedge \top = a$，$a \vee \bot = a$；
+            \item 互补律（Complements）：$a \vee \neg a = \bot$，$a \wedge \top a = \top$。
         \end{itemize}
+
+    \subsection{二元素布尔代数}\label{subsec:Calculations/BooleanAlgebra/TwoElementBooleanAlgebra}
+        二元素布尔代数（Two-Element Boolean Algebra）是最常见的布尔代数，在逻辑、电路等场合极其常见。
+
+        二元素布尔代数指定了两个元素 $0$ 与 $1$ 分别对应底元素 $\bot$ 与 $\top$，并有表~\ref{tab:Calculations/BooleanAlgebra/TwoElementBooleanAlgebra/Operations} 所示的运算定义：
+
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|}
+                \hline
+                $\wedge$ & 0 & 1 \\ \hline
+                0        & 0 & 0 \\ \hline
+                1        & 0 & 1 \\ \hline
+            \end{tabular}
+            \begin{tabular}{|c|c|c|}
+                \hline
+                $\vee$ & 0 & 1 \\ \hline
+                0      & 0 & 1 \\ \hline
+                1      & 1 & 1 \\ \hline
+            \end{tabular}
+            \begin{tabular}{|c|c|c|}
+                \hline
+                $a$      & 0 & 1 \\ \hline
+                $\neg a$ & 1 & 0 \\ \hline
+            \end{tabular}
+            \caption{二元素布尔代数的运算法则}
+            \label{tab:Calculations/BooleanAlgebra/TwoElementBooleanAlgebra/Operations}
+        \end{table}
+
+        二元素布尔代数只有两个状态，恰好可以与电路的高低电压状态对应，因此只要能做出输入输出满足要求的电子元件便可以使用电路模拟出二元素布尔代数。
