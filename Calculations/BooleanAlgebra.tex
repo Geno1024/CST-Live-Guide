@@ -26,3 +26,71 @@
             xy &= yx \label{eqn:Calculations/BooleanAlgebra/OriginAndBuilding/CommutativeLaw} \\
             x ^ n &= x \label{eqn:Calculations/BooleanAlgebra/OriginAndBuilding/IndexLaw}
         \end{align}
+
+        就此可以构建四个逻辑命题：
+        \begin{enumerate}
+            \item 全称肯定（Universal Affirmative，又称 A 命题）：所有的 $X$ 都是 $Y$；
+            \item 全称否定（Universal Negative，又称 E 命题）：没有 $X$ 是 $Y$；
+            \item 特称肯定（Particular Affirmative，又称 I 命题）：一些 $X$ 是 $Y$；
+            \item 特称否定（Particular Negative，又称 O 命题）：一些 $X$ 不是 $Y$。
+        \end{enumerate}
+        然后我们可以使用上面的运算系统表达这些逻辑命题。
+
+        首先我们先简单思考一下如何表达“不是 $X$”。由于全集是 $1$，且“是 $X$”和“不是 $X$”加起来就是全集，因此我们可以把“不是 $X$”记作 $1 - x$。
+
+        接着我们分别考虑这四个逻辑命题的表达方式：
+        \begin{enumerate}
+            \item 全称肯定“所有的 $X$ 都是 $Y$”，也就是说在 $Y$ 中选择出那些是 $X$ 的，其结果仍为 $X$，亦即 \[xy = x\]，或者说
+                \begin{align}
+                    x(1 - y) = 0 \label{eqn:Calculations/BooleanAlgebra/OriginAndBuilding/UniversalAffirmative}
+                \end{align}
+            \item 全称否定“没有 $X$ 是 $Y$”，也就是说 $X$ 和 $Y$ 没有交集，从 $X$ 中选择出那些是 $Y$ 的结果是 $0$，即
+                \begin{align}
+                    xy = 0 \label{eqn:Calculations/BooleanAlgebra/OriginAndBuilding/UniversalNegative}
+                \end{align}
+            \item 特称肯定“一些 $X$ 是 $Y$”，也就是说 $X$ 和 $Y$ 有一些交集，我们任意地指定其交集为 $V$，那么可以将其表示为
+                \begin{align}
+                    xy = v \label{eqn:Calculations/BooleanAlgebra/OriginAndBuilding/ParticularAffirmative}
+                \end{align}
+            \item 特称否定“一些 $X$ 不是 $Y$”，同理可得
+                \begin{align}
+                    x(1 - y) = v \label{eqn:Calculations/BooleanAlgebra/OriginAndBuilding/ParticularNegative}
+                \end{align}
+        \end{enumerate}
+
+        在此之后，我们可以将普通的命题转化为这一套运算系统之上的语言，并进行运算或化简。
+
+        为了方便使用，我们再将其抽象为描述假设与推论的工具。我们将 $X$、$Y$ 等大写字母视为命题，可以描述出两种条件三段论（Conditional Syllogism）：
+        \begin{enumerate}
+            \item 构造性（Constructive）推论：如果 $X$ 真，那么 $Y$ 真，由于 $X$ 真，所以 $Y$ 真；
+            \item 破坏性（Destructive）推论：如果 $X$ 真，那么 $Y$ 真，由于 $Y$ 假，所以 $X$ 假。
+        \end{enumerate}
+
+        在这一层抽象之后，我们需要考虑的就不是各个对象及其属性，而是命题的真性，真的值为 $1$，假的值为 $0$。同时，类似的运算系统依然可以适用。例如：
+        \begin{itemize}
+            \item 表示命题 $X$ 为真，可以记作 $x = 1$，或者 $1 - x = 0$；
+            \item 表示命题 $X$ 为假，可以记作 $x = 0$；
+            \item 表示命题 $X$ 和 $Y$ 同时为真，可以记作 $xy = 1$；
+            \item 表示命题 $X$ 和 $Y$ 同时为假，可以记作 $(1 - x)(1 - y) = 1$，或者 $x + y - xy = 0$；
+            \item 表示命题 $X$ 和 $Y$ 一真一假，可以记作 $(1 - x)(1 - y) = 0$，或者 $x + y - xy = 1$
+        \end{itemize}
+
+        我们也可以进行一些逻辑推论，例如
+        \begin{itemize}
+            \item 构造性条件三段论：如果 $X$ 真，那么 $Y$ 真（于是有 $x(1 - y) = 0$），由于 $X$ 真（于是有 $x = 1$），可得 $1 - y = 0$ 也就是 $y = 1$ 或者说 $Y$ 真；
+            \item 破坏性条件三段论：如果 $X$ 真，那么 $Y$ 真（于是有 $x(1 - y) = 0$），由于 $Y$ 假（于是有 $y = 0$），可得 $x = 0$ 也就是 $X$ 假。
+        \end{itemize}
+
+        事实上，我们构建出了一套取值范围只有 $0$ 和 $1$ 两种情况的数值系统，这个系统可以用于表达命题的真假，还可以表达命题间的逻辑关系。后来这个数值系统被命名为布尔代数（Boolean Algebra）。
+
+    \subsection{定义}\label{subsec:Calculations/BooleanAlgebra/Definition}
+        布尔代数是
+
+    \subsection{运算与定律}\label{subsec:subsec:Calculations/BooleanAlgebra/OperationsAndLaws}
+        布尔代数上常用的几个运算符分别称为“与”、“或”、“非”。
+
+        \begin{itemize}
+            \item “与”是一个二元运算符，其可以
+            \item “或”是一个二元运算符
+            \item “非”是
+        \end{itemize}
