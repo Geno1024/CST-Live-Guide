@@ -22,6 +22,8 @@ CST 是 Computer Science and Technology 的缩写，是我们的专业名称。
 > Knowledge is a journey, not a destination.  
 > -- Firefox
 
+![Repobeats Analytics](https://repobeats.axiom.co/api/embed/475f80f7ada8472e6930bf50a9982be0ca89c6c2.svg)
+
 ---
 
 ## FAQ
