@@ -36,7 +36,6 @@ jobs:
           sudo apt install texlive-xetex texlive-lang-chinese texlive-bibtex-extra biber texlive-science
       - name: Install TeX Package
         env:
-          TEX_HIST_MIRROR: https://ftp.math.utah.edu/pub/tex/historic/
           TEXMFHOME: /usr/share/texlive/texmf-dist
         run: |
           sudo tlmgr install biblatex-gb7714-2015 --verify-repo=none || sudo updmap-sys
