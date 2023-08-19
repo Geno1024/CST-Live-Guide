@@ -23,7 +23,7 @@ jobs:
         if: steps.cache-apt.outputs.cache-hit != 'true'
         run: |
           sudo apt update
-          sudo apt install -d --no-install-recommends texlive-xetex texlive-lang-chinese texlive-bibtex-extra biber texlive-science
+          sudo apt install -d --no-install-recommends texlive-xetex texlive-lang-chinese texlive-bibtex-extra texlive-plain-generic biber texlive-science
           mkdir ~/apt-cache
           sudo cp /var/cache/apt/archives/*.deb ~/apt-cache
       - name: Copy apt packages if cache exists
@@ -33,7 +33,7 @@ jobs:
       - name: Install TeXLive and Fonts
         run: |
           sudo apt update
-          sudo apt install --no-install-recommends texlive-xetex texlive-lang-chinese texlive-bibtex-extra biber texlive-science
+          sudo apt install --no-install-recommends texlive-xetex texlive-lang-chinese texlive-bibtex-extra texlive-plain-generic biber texlive-science
       - name: Install TeX Package
         env:
           TEXMFHOME: /usr/share/texlive/texmf-dist
@@ -46,9 +46,11 @@ jobs:
           BUILD_COUNT_SERVER: ${{ secrets.BUILD_COUNT_SERVER }}
         run: |
           [[ -n $BUILD_COUNT_SERVER ]] && curl -so build.txt "$BUILD_COUNT_SERVER"/CST-Live-Guide4 || echo -n "LOCAL" > build.txt
+          cat build.txt
       - name: Word Count
         run: |
           detex CST-Live-Guide.tex | wc -m > wordcount.txt
+          cat wordcount.txt
       - name: Build
         run: |
           chapters=$(find ./* -maxdepth 1 -type d)
