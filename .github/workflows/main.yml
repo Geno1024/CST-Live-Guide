@@ -19,14 +19,14 @@ jobs:
         with:
           path: ~/apt-cache
           key: ${{ runner.os }}-apt
-      - name: Download apt packages if cache not exists
+      - name: Download `apt` Packages if Cache Not Exists
         if: steps.cache-apt.outputs.cache-hit != 'true'
         run: |
           sudo apt update
           sudo apt install -d --no-install-recommends texlive-xetex texlive-lang-chinese texlive-bibtex-extra texlive-plain-generic biber texlive-science
           mkdir ~/apt-cache
           sudo cp /var/cache/apt/archives/*.deb ~/apt-cache
-      - name: Copy apt packages if cache exists
+      - name: Copy `apt` Packages if Cache Exists
         if: steps.cache-apt.outputs.cache-hit == 'true'
         run: |
           sudo cp ~/apt-cache/*.deb /var/cache/apt/archives
