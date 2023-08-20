@@ -18,7 +18,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/apt-cache
-          key: ${{ runner.os }}-${{ secrets.CACHE_KEY }}
+          key: ${{ runner.os }}-apt
       - name: Download apt packages if cache not exists
         if: steps.cache-apt.outputs.cache-hit != 'true'
         run: |
