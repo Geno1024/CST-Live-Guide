@@ -32,7 +32,6 @@ jobs:
           sudo cp ~/apt-cache/*.deb /var/cache/apt/archives
       - name: Install TeXLive and Fonts
         run: |
-          sudo apt update
           sudo apt install --no-install-recommends texlive-xetex texlive-lang-chinese texlive-bibtex-extra texlive-plain-generic biber texlive-science
       - name: Install TeX Package
         env:
