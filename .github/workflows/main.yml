@@ -72,7 +72,7 @@ jobs:
           rm "${pdfjs##*/}"
           sed -i "s#../build/##" index.html pdf.mjs viewer.mjs
           sed -i "s#../web/##" viewer.mjs
-          sed -i "s/compressed.tracemonkey-pldi-09.pdf/CST-Live-Guide.pdf/" viewer.js
+          sed -i "s/compressed.tracemonkey-pldi-09.pdf/CST-Live-Guide.pdf/" viewer.mjs
       - name: Add View Statistics
         run: |
           cd pdfjs || exit
