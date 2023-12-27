@@ -23,7 +23,7 @@ jobs:
         if: ${{ steps.cache-apt.outputs.cache-hit != 'true' }}
         run: |
           sudo apt update
-          sudo apt install -d --no-install-recommends texlive-xetex texlive-lang-chinese texlive-bibtex-extra texlive-plain-generic biber texlive-science
+          sudo apt install -d --no-install-recommends --no-install-suggests texlive-xetex texlive-lang-chinese texlive-bibtex-extra texlive-plain-generic biber texlive-science
           mkdir ~/apt-cache
           sudo cp /var/cache/apt/archives/*.deb ~/apt-cache
       - name: Copy `apt` Packages if Cache Exists
@@ -32,7 +32,7 @@ jobs:
           sudo cp ~/apt-cache/*.deb /var/cache/apt/archives
       - name: Install TeXLive and Fonts
         run: |
-          sudo apt install --no-install-recommends texlive-xetex texlive-lang-chinese texlive-bibtex-extra texlive-plain-generic biber texlive-science
+          sudo apt install --no-install-recommends --no-install-suggests texlive-xetex texlive-lang-chinese texlive-bibtex-extra texlive-plain-generic biber texlive-science
       - name: Install TeX Package
         env:
           TEXMFHOME: /usr/share/texlive/texmf-dist
