@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Cache apt packages
         id: cache-apt
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/apt-cache
           key: ${{ runner.os }}-apt
@@ -39,7 +39,7 @@ jobs:
         run: |
           sudo tlmgr install biblatex-gb7714-2015 --verify-repo=none || sudo updmap-sys
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Build Count
         env:
           BUILD_COUNT_SERVER: ${{ secrets.BUILD_COUNT_SERVER }}
@@ -85,14 +85,14 @@ jobs:
           find locale -mindepth 1 ! -wholename "*/zh-CN*" -delete
           echo '{"zh-cn":"zh-CN/viewer.ftl"}' > locale/locale.json
       - name: Publish Document
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: CST-Live-Guide
           path: |
             build.txt
             CST-Live-Guide.pdf
       - name: Publish Modified Pdf.js
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Modified Pdf.js
           path: |
@@ -108,11 +108,11 @@ jobs:
           echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
           chmod 0600 ~/.ssh/id_rsa
       - name: Get Build Output
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: CST-Live-Guide
       - name: Get Modified Pdf.js
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Modified Pdf.js
       - name: Make Git Repository for Deploying
