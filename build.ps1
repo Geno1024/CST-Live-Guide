@@ -1,3 +1,4 @@
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $ErrorActionPreference = 'SilentlyContinue'
 
 if ([string]::IsNullOrWhitespace($env:BUILD_COUNT_SERVER))

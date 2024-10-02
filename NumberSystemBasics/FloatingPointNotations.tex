@@ -1,5 +1,5 @@
 \section{浮点数的记录方式}\label{sec:NumberSystemBasics/FloatingPointNotations}
-    在\sout{漫漫的}计算机历史长河中，曾经出现过大量的浮点数记录方式。在被标准化之前，这些浮点数记录方式可以大致分成三类\cite{jjgsavard-2005-cp0201}：
+    在\sout{漫漫的}计算机历史长河中，曾经出现过大量的浮点数记录方式。在被标准化之前，这些浮点数记录方式可以大致分成三类\cite{jjgsavard-2005}：
     \begin{enumerate}
         \item $1$ 位符号位，若干位（加上定值以便于记录负数的）指数位，若干位尾数位；
         \item 若干位（二补数记录的）指数位，若干位（二补数记录的）尾数位；
@@ -8,7 +8,7 @@
     出现浮点数记录方式百花齐放的原因是，一方面当时也是一个各种计算机百花齐放的年代，另一方面当时的硬件并不非常发达，芯片制造商倾向于复用整数运算模块，而一些特殊的浮点数记录方式方便了在自家芯片上的复用。
 
     \subsection{IEEE 754}\label{subsec:NumberSystemBasics/FloatingPointNotations/IEEE754}
-        1985 年 3 月 21 日，电气电子工程师学会（IEEE）通过了《二进制浮点数算术的 IEEE 标准》\footnote{IEEE 754--1985 IEEE Standard for Binary Floating-Point Arithmetic\cite{ieee754-1985}}（IEEE 754）。该标准成为了浮点数表示的业界规范。
+        1985 年 3 月 21 日，电气电子工程师学会（IEEE）通过了《二进制浮点数算术的 IEEE 标准》\footnote{IEEE 754--1985 IEEE Standard for Binary Floating-Point Arithmetic\cite{ieee}}（IEEE 754）。该标准成为了浮点数表示的业界规范。
 
         \subsubsection{前置定义}\label{subsubsec:NumberSystemBasics/FloatingPointNotations/IEEE754/PreDefinitions}
             IEEE 754 标准首先定义了一个浮点数规范所需的几个参数：

@@ -14,16 +14,16 @@
             汉语中对于更大的数字的权重，传统上有亿、兆、京、垓、秭、穰、沟、涧、正、载十个名称。但对于这些名称具体表达的权重大小存在不同的定义，这也造成了现代汉语表达上的混淆。
 
             \begin{itemize}
-                \item 下数：每十倍使用下一个权重名称\footnote{“十十变之”\cite[卷上 12]{wujin}，“以十进”\cite[卷一 15]{shulijinyun}}，即 10 万为 1 亿（$10^6$），10 亿为 1 兆（$10^7$），10 兆为 1 京（$10^8$），依此类推。
-                \item 万进：每万倍使用下一个权重名称\footnote{“以万进”\cite[卷一 15]{shulijinyun}}，即 1 万万为 1 亿（$10^8$），1 万亿为 1 兆（$10^{12}$），1 万兆为 1 京（$10^{16}$），依此类推。
-                \item 中数：每万万倍使用下一个权重名称\footnote{“万万变之”\cite[卷上 12]{wujin}，“万万曰亿，万万亿曰兆，……”\cite[卷上 3]{sunzi}}，即 1 万万为 1 亿（$10^8$），1 万万亿为 1 兆（$10^{16}$），1 万万兆为 1 京（$10^{24}$），依此类推。
-                \item 上数：递归地使用更小的权重名称，直到用完才使用更大的权重名称\footnote{“数穷则变”\cite[卷上 12]{wujin}，“以自乘之数进”\cite[卷上 15]{shulijinyun}}，即 1 万万为 1 亿（$10^8$），1 亿亿为 1 兆（$10^{16}$），1 兆兆为 1 京（$10^{32}$），依此类推。
+                \item 下数：每十倍使用下一个权重名称\footnote{“十十变之”\cite[卷上 12]{zhenluan}，“以十进”\cite[卷一 15]{yunzhi}}，即 10 万为 1 亿（$10^6$），10 亿为 1 兆（$10^7$），10 兆为 1 京（$10^8$），依此类推。
+                \item 万进：每万倍使用下一个权重名称\footnote{“以万进”\cite[卷一 15]{yunzhi}}，即 1 万万为 1 亿（$10^8$），1 万亿为 1 兆（$10^{12}$），1 万兆为 1 京（$10^{16}$），依此类推。
+                \item 中数：每万万倍使用下一个权重名称\footnote{“万万变之”\cite[卷上 12]{zhenluan}，“万万曰亿，万万亿曰兆，……”\cite[卷上 3]{sunzi}}，即 1 万万为 1 亿（$10^8$），1 万万亿为 1 兆（$10^{16}$），1 万万兆为 1 京（$10^{24}$），依此类推。
+                \item 上数：递归地使用更小的权重名称，直到用完才使用更大的权重名称\footnote{“数穷则变”\cite[卷上 12]{zhenluan}，“以自乘之数进”\cite[卷上 15]{yunzhi}}，即 1 万万为 1 亿（$10^8$），1 亿亿为 1 兆（$10^{16}$），1 兆兆为 1 京（$10^{32}$），依此类推。
             \end{itemize}
-            另外，《中华人民共和国法定计量单位》又定义了“兆”为 $10^6$。\footnote{所表示的因数：$10^6$，词头名称：兆，词头符号：M\cite[附件 表 5]{gf1984-28}}
+            另外，《中华人民共和国法定计量单位》又定义了“兆”为 $10^6$。\footnote{所表示的因数：$10^6$，词头名称：兆，词头符号：M\cite[附件 表 5]{gwy}}
 
             因此，“兆”字在不同的上下文中会有不同的所指，需要根据语境及地区以确定其所表示的值。
 
-            另外，佛教中存在着表达更大的数的名称，递进规律使用了“上数”的定义\footnote{“百千百千名一拘梨。拘梨拘梨名一不变。……不可说转不可说转名一不可说转转。”\cite[卷第二十九 1]{huayan}}，但这些名称并没有现实用途。
+            另外，佛教中存在着表达更大的数的名称，递进规律使用了“上数”的定义\footnote{“百千百千名一拘梨。拘梨拘梨名一不变。……不可说转不可说转名一不可说转转。”\cite[卷第二十九 1]{bhadra}}，但这些名称并没有现实用途。
         \end{displayquote}
 
         而古印度人，创造出了九个符号，演化至今成为了最流行的“阿拉伯数字”，即 \texttt{1}、\texttt{2}、\texttt{3}、\texttt{4}、\texttt{5}、\texttt{6}、\texttt{7}、\texttt{8}、\texttt{9}。当要记录的数字比 \texttt{9} 大的时候，我们往“前”“进一”并使用新符号 \texttt{0} 进行占位。这个“进”导致相同的数码在不同的位置上会表示不同的意义，例如 \[100\] 的 \texttt{1} 表示一个“百”，而 \[10000\]的 \texttt{1} 表示一个“万”。至于为何“进”的方向是向左而非向右，这只是约定俗成的原因。
@@ -40,7 +40,7 @@
         在有了通用的进位制的概念之后，我们可以非常容易地定义其它的进位制。
 
     \subsection{二进制}\label{subsec:NumberSystemBasics/PositionalNotation/Binary}
-        二进制（Binary），即以 \texttt{2} 为基数的进位制。现代意义上的以 2 为基数的进位制，是由 Gottfried Wilhelm Leibniz 受伏羲八卦图的影响在 1703 年完成的论文\cite{leibniz-binary}中提出的。
+        二进制（Binary），即以 \texttt{2} 为基数的进位制。现代意义上的以 2 为基数的进位制，是由 Gottfried Wilhelm Leibniz 受伏羲八卦图的影响在 1703 年完成的论文\cite{gwleibniz}中提出的。
         % TODO: 改写上下两段话。
         由于二进制的每一位只有两种状态，因此使用若干个可以表达两种状态的物体即可表达一个二进制数，而电子电路恰好满足这个条件，例如电路的“通”与“断”，电压的“高”与“低”，等等，因此现代的计算机都以二进制作为电路层面最底层的数学基础。
 
@@ -69,14 +69,14 @@
             \begin{tabular}{|c|l|l|l|l|l|l|}
                 \hline
                 设备型号 & 10 & 11 & 12 & 13 & 14 & 15 \\ \hline
-                IBM System/360\tablefootnote{\cite[APPENDIX E: HEXADECIMAL-DECIMAL NUMBER CONVERSION TABLE]{ibm-360-assembler-language}} & \texttt{A} & \texttt{B} & \texttt{C} & \texttt{D} & \texttt{E} & \texttt{F} \\ \hline
-                Monrobot XI\tablefootnote{\cite[Sexadecimal System]{monrobot-xi-program-manual}，有文章指出这样的奇怪排布是出于穿孔卡片方便\cite{johnmann-monrobot-xi}，但是 Geno 并没有找到这个型号的穿孔卡片的样子。} & \texttt{S} & \texttt{T} & \texttt{U} & \texttt{V} & \texttt{W} & \texttt{X} \\ \hline
-                DATAmatic 1000\tablefootnote{“Similarly, "hexadecimal" is used to denote any of the sixteen characters (ten decimal digits and six special symbols called hex B, C, D, E, F, and G)$\cdots$”\cite[Programmer's Language: Constants]{datamatic-1000-manual-vol-1}，不使用 A 的原因\textit{可能}是为了避免与下文说明的使用 A 作为 Alphanumeric constant 的声明相混淆。} & \texttt{B} & \texttt{C} & \texttt{D} & \texttt{E} & \texttt{F} & \texttt{G} \\ \hline
-                LGP-30\tablefootnote{\cite[Hexadecimal Digits.]{lgp-30-manual}，\textit{很可能}是把英文字母表去掉用于命令的字母\cite[Summary of Orders]{lgp-30-manual}~\cite[The Command Table]{lgp-30-advertisement}，再去掉诸如数字 0 与大写英文字母 O、数字 1 与小写英文字母 l 等容易混淆的字母之后剩下的列表。} & \texttt{f} & \texttt{g} & \texttt{j} & \texttt{k} & \texttt{q} & \texttt{l} \\ \hline
-                PDS 1020\tablefootnote{\cite[Table of Printout Abbreviations]{pds1020-guide}，似乎是使用 LDS、CPY、ADD、SUB、MPY、DIV 六个可以在键盘\cite[Data Flow In The PDS 1020 Computer]{pds1020-guide}上直接输入的指令的首字母。} & L & C & A & S & M & D \\ \hline
+                IBM System/360\tablefootnote{\cite[APPENDIX E: HEXADECIMAL-DECIMAL NUMBER CONVERSION TABLE]{ibm}} & \texttt{A} & \texttt{B} & \texttt{C} & \texttt{D} & \texttt{E} & \texttt{F} \\ \hline
+                Monrobot XI\tablefootnote{\cite[Sexadecimal System]{monrobot}，有文章指出这样的奇怪排布是出于穿孔卡片方便\cite{johnmann}，但是 Geno 并没有找到这个型号的穿孔卡片的样子。} & \texttt{S} & \texttt{T} & \texttt{U} & \texttt{V} & \texttt{W} & \texttt{X} \\ \hline
+                DATAmatic 1000\tablefootnote{“Similarly, "hexadecimal" is used to denote any of the sixteen characters (ten decimal digits and six special symbols called hex B, C, D, E, F, and G)$\cdots$”\cite[Programmer's Language: Constants]{datamatic}，不使用 A 的原因\textit{可能}是为了避免与下文说明的使用 A 作为 Alphanumeric constant 的声明相混淆。} & \texttt{B} & \texttt{C} & \texttt{D} & \texttt{E} & \texttt{F} & \texttt{G} \\ \hline
+                LGP-30\tablefootnote{\cite[Hexadecimal Digits.]{lgp-1957}，\textit{很可能}是把英文字母表去掉用于命令的字母\cite[Summary of Orders]{lgp-1957}~\cite[The Command Table]{lgp-1956}，再去掉诸如数字 0 与大写英文字母 O、数字 1 与小写英文字母 l 等容易混淆的字母之后剩下的列表。} & \texttt{f} & \texttt{g} & \texttt{j} & \texttt{k} & \texttt{q} & \texttt{l} \\ \hline
+                PDS 1020\tablefootnote{\cite[Table of Printout Abbreviations]{pds}，似乎是使用 LDS、CPY、ADD、SUB、MPY、DIV 六个可以在键盘\cite[Data Flow In The PDS 1020 Computer]{pds}上直接输入的指令的首字母。} & L & C & A & S & M & D \\ \hline
                 % TODO: 把 cite 中提到的其它计算机都补上
             \end{tabular}
-            \caption{历史上出现过的不同的十六进制数码\tablefootnote{\cite[The Early Days of Hexadecimal]{jjgsavard-2013-cp02}}}
+            \caption{历史上出现过的不同的十六进制数码\tablefootnote{\cite[The Early Days of Hexadecimal]{jjgsavard-2013}}}
             \label{tab:NumberSystemBasics/PositionalNotation/BinaryDerivation/HistoricalHexadecimalDigits}
         \end{table}
 
