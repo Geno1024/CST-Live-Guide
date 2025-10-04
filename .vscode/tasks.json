@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CST Live Guide",
+            "type": "shell",
+            "windows": {
+                "command": "powershell.exe",
+                "args": [
+                    "${cwd}/build.ps1"
+                ],
+            },
+            "linux": {
+                "command": "bash",
+                "args": [
+                    "${cwd}/build.sh"
+                ]
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
