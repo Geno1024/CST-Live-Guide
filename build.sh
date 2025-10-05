@@ -6,7 +6,7 @@ rm -rf build
 chapters=$(find ./* -maxdepth 1 -type d)
 mkdir build
 for chapter in $chapters; do
-  mkdir build/"$chapter"
+    mkdir build/"$chapter"
 done
 detex CST-Live-Guide.tex | wc -m > wordcount.txt
 xelatex -output-directory=build -shell-escape -synctex=1 CST-Live-Guide.tex
