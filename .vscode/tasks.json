@@ -8,7 +8,7 @@
                 "command": "powershell.exe",
                 "args": [
                     "${cwd}/build.ps1"
-                ],
+                ]
             },
             "linux": {
                 "command": "bash",
